@@ -1,0 +1,11 @@
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.stat-card {
+  @include card;
+  padding: 20px;
+
+  &__label { font-size: 0.82rem; color: $ink-500; margin-bottom: 8px; }
+  &__value { font-family: $font-display; font-size: 1.6rem; color: $ink-900; }
+  &__delta { font-size: 0.78rem; color: $success; margin-top: 4px; }
+}

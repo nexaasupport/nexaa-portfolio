@@ -1,0 +1,33 @@
+@use '../base/variables' as *;
+
+.bar-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.bar-chart__row {
+  display: grid;
+  grid-template-columns: 110px 1fr 40px;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.82rem;
+}
+
+.bar-chart__name { color: $ink-700; }
+
+.bar-chart__track {
+  height: 8px;
+  border-radius: $radius-pill;
+  background: $surface-alt;
+  overflow: hidden;
+}
+
+.bar-chart__fill {
+  height: 100%;
+  border-radius: $radius-pill;
+  background: linear-gradient(90deg, $brand-500, $brand-700);
+  transition: width 0.4s ease;
+}
+
+.bar-chart__pct { text-align: right; color: $ink-500; font-size: 0.78rem; }

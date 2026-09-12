@@ -1,0 +1,43 @@
+@use 'variables' as *;
+
+@mixin container {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 84px 40px;
+}
+
+@mixin mono {
+  font-family: $font-mono;
+}
+
+@mixin display {
+  font-family: $font-display;
+}
+
+@mixin card-lift($shadow: 0 16px 32px -20px oklch(0.24 0.02 260 / 0.22)) {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s, border-color 0.25s;
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow;
+    border-color: var(--accent-border);
+  }
+}
+
+@mixin section-heading-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 28px;
+}
+
+@mixin reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+
+  &.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}

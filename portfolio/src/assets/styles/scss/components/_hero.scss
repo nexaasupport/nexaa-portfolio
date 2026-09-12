@@ -1,0 +1,230 @@
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.hero {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 100px 40px 90px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 56px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+
+  &__mark {
+    position: absolute;
+    top: -0.5em;
+    left: -0.08em;
+    @include display;
+    font-size: min(38vw, 480px);
+    font-weight: 700;
+    line-height: 1;
+    color: var(--accent);
+    opacity: 0.04;
+    z-index: 0;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    @include mono;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: oklch(0.35 0.012 260);
+    background: var(--accent-tint);
+    border: 1px solid var(--accent-border);
+    border-radius: 999px;
+    padding: 7px 14px;
+
+    &-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: nx-pulse 2s ease-in-out infinite;
+    }
+  }
+
+  &__title {
+    font-size: clamp(38px, 4.6vw, 58px);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+    font-weight: 700;
+    margin: 26px 0 0;
+    text-wrap: pretty;
+    animation: nx-up 0.7s 0.08s ease both;
+
+    em {
+      font-style: normal;
+      color: var(--accent);
+    }
+  }
+
+  &__title-dash {
+    color: var(--accent2);
+  }
+
+  &__lead {
+    font-size: 18px;
+    line-height: 1.65;
+    color: oklch(0.45 0.012 260);
+    max-width: 540px;
+    margin: 22px 0 0;
+    text-wrap: pretty;
+    animation: nx-up 0.7s 0.16s ease both;
+  }
+
+  &__sub {
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: oklch(0.52 0.012 260);
+    max-width: 540px;
+    margin: 16px 0 0;
+    animation: nx-up 0.7s 0.2s ease both;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 34px;
+    animation: nx-up 0.7s 0.24s ease both;
+
+    .btn--gradient {
+      font-size: 15px;
+      padding: 14px 26px;
+      border-radius: 9px;
+      box-shadow: 0 16px 32px -16px var(--accent-shadow);
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 20px 36px -14px var(--accent-shadow);
+      }
+    }
+
+    .btn--ghost {
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 24px;
+      border-radius: 9px;
+      border: 1px solid oklch(0.24 0.015 260 / 0.16);
+      background: $surface-white;
+      transition: border-color 0.2s, background 0.2s;
+
+      &:hover {
+        border-color: oklch(0.24 0.015 260 / 0.32);
+        background: oklch(0.985 0.003 255);
+      }
+    }
+  }
+
+  &__panel {
+    position: relative;
+    z-index: 1;
+    min-height: 320px;
+  }
+
+  &__stack {
+    position: relative;
+    height: 300px;
+  }
+}
+
+.hero-stat {
+  position: absolute;
+  width: 220px;
+  padding: 22px;
+  border-radius: $radius-md;
+  background: $surface-white;
+  border: 1px solid oklch(0.24 0.015 260 / 0.1);
+  box-shadow: 0 20px 40px -24px oklch(0.24 0.015 260 / 0.35);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 44px -20px oklch(0.24 0.015 260 / 0.4);
+    z-index: 5;
+  }
+
+  &--0 {
+    top: 0;
+    left: 8%;
+    background: var(--accent);
+    border-color: var(--accent);
+    color: $surface-white;
+    z-index: 3;
+  }
+
+  &--1 {
+    top: 76px;
+    left: 32%;
+    z-index: 2;
+  }
+
+  &--2 {
+    top: 160px;
+    left: 4%;
+    background: $surface-white;
+    z-index: 1;
+  }
+
+  &__label {
+    @include mono;
+    font-size: 10.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.65;
+  }
+
+  &__value {
+    @include display;
+    font-size: 19px;
+    font-weight: 700;
+    margin-top: 8px;
+  }
+}
+
+.marquee {
+  border-top: 1px solid oklch(0.24 0.015 260 / 0.08);
+  border-bottom: 1px solid oklch(0.24 0.015 260 / 0.08);
+  background: $surface-white;
+  overflow: hidden;
+  padding: 18px 0;
+
+  &__track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    gap: 14px;
+    animation: nx-marquee 34s linear infinite;
+    @include mono;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: oklch(0.45 0.012 260);
+    white-space: nowrap;
+
+    span {
+      padding: 0 2px;
+    }
+  }
+
+  &__dot {
+    color: var(--accent-border);
+    font-size: 12px;
+  }
+
+  &:hover &__track {
+    animation-play-state: paused;
+  }
+}

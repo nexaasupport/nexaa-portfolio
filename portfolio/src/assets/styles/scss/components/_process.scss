@@ -1,0 +1,60 @@
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.process-section {
+  border-top: 1px solid oklch(0.24 0.015 260 / 0.08);
+
+  &__inner {
+    @include container;
+  }
+
+  &__title {
+    font-size: clamp(28px, 3vw, 34px);
+    font-weight: 700;
+    letter-spacing: -0.028em;
+    margin: 0 0 30px;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 28px;
+  }
+}
+
+.process-card {
+  padding: 22px;
+  border-radius: $radius-md;
+  background: $surface-white;
+  border: 1px solid oklch(0.24 0.015 260 / 0.1);
+  border-top: 4px solid var(--accent);
+  @include card-lift;
+
+  &__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__num {
+    @include display;
+    font-size: 26px;
+    font-weight: 700;
+    color: oklch(0.85 0.01 260);
+  }
+
+  &__title {
+    @include display;
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 10px 0 8px;
+  }
+
+  &__body {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: oklch(0.48 0.012 260);
+    margin: 0;
+  }
+}

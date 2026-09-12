@@ -1,0 +1,54 @@
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.admin-sidebar {
+  background: $brand-900;
+  color: $surface-white;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  @include respond(md) { position: sticky; top: 0; z-index: 40; flex-direction: row; align-items: center; padding: 12px 16px; overflow-x: auto; }
+
+  &__logo {
+    font-family: $font-display;
+    font-weight: 700;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 8px;
+
+    &::before { content: ''; width: 10px; height: 10px; border-radius: 3px; background: $accent; }
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    @include respond(md) { flex-direction: row; }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: $radius-sm;
+    font-size: 0.9rem;
+    color: oklch(1 0 0 / 0.7);
+    white-space: nowrap;
+    transition: background $transition, color $transition;
+
+    &:hover { background: oklch(1 0 0 / 0.08); color: $surface-white; }
+    &.is-active { background: oklch(1 0 0 / 0.14); color: $surface-white; font-weight: 600; }
+  }
+
+  &__footer {
+    margin-top: auto;
+    padding: 12px 8px;
+    font-size: 0.8rem;
+    color: oklch(1 0 0 / 0.6);
+    @include respond(md) { display: none; }
+  }
+}

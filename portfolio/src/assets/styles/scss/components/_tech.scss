@@ -1,0 +1,90 @@
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.tech-section {
+  border-top: 1px solid oklch(0.24 0.015 260 / 0.08);
+  background: $surface-white;
+
+  &__inner {
+    @include container;
+  }
+
+  &__lead {
+    font-size: 16.5px;
+    line-height: 1.6;
+    color: oklch(0.5 0.012 260);
+    margin: 12px 0 30px;
+    max-width: 620px;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px;
+  }
+
+  &__pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 16px;
+  }
+}
+
+.tech-card {
+  padding: 26px;
+  border-radius: $radius-md;
+  border: 1px solid oklch(0.24 0.015 260 / 0.1);
+  background: $surface-white;
+  @include card-lift;
+
+  &__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+  }
+
+  &__title {
+    @include display;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  &__icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: $surface-white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__note {
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: oklch(0.45 0.012 260);
+    margin-top: 12px;
+  }
+}
+
+.tech-pill {
+  @include mono;
+  font-size: 13px;
+  padding: 10px 15px;
+  border-radius: 999px;
+  border: 1px solid oklch(0.24 0.015 260 / 0.1);
+  color: $text;
+  transition: background 0.2s, color 0.2s;
+
+  &:hover {
+    background: var(--accent2);
+    border-color: var(--accent2);
+    color: $surface-white;
+  }
+}

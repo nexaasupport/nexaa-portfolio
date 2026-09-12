@@ -1,0 +1,44 @@
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.section { padding: 72px 0; }
+.section__inner { @include container; }
+
+.section__head {
+  max-width: 60ch;
+  margin-bottom: 40px;
+
+  .eyebrow { color: $brand-500; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 10px; display: block; }
+  h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 10px; }
+  p { color: $ink-500; }
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  @include respond(lg) { grid-template-columns: repeat(2, 1fr); }
+  @include respond(sm) { grid-template-columns: 1fr; }
+}
+
+.service-card {
+  @include card;
+  padding: 26px;
+  transition: transform $transition, box-shadow $transition;
+
+  &:hover { transform: translateY(-4px); box-shadow: $shadow-md; }
+
+  &__icon {
+    width: 44px; height: 44px;
+    border-radius: $radius-sm;
+    background: $brand-200;
+    color: $brand-900;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  h3 { font-size: 1.05rem; margin-bottom: 8px; }
+  p { color: $ink-500; font-size: 0.9rem; margin-bottom: 14px; }
+
+  &__price { font-weight: 700; color: $brand-700; font-size: 0.92rem; }
+}

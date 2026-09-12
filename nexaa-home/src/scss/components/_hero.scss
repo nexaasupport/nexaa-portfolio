@@ -1,0 +1,68 @@
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.hero {
+  padding: 88px 0 64px;
+  background: linear-gradient(180deg, $surface-alt 0%, $surface 100%);
+
+  &__inner {
+    @include container;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 48px;
+    align-items: center;
+    @include respond(md) { grid-template-columns: 1fr; }
+  }
+
+  &__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: $radius-pill;
+    background: $brand-200;
+    color: $brand-900;
+    font-size: 0.82rem;
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+
+  h1 {
+    font-size: clamp(2.1rem, 4vw, 3.1rem);
+    color: $ink-900;
+    margin-bottom: 18px;
+  }
+
+  &__lede {
+    font-size: 1.05rem;
+    color: $ink-500;
+    max-width: 46ch;
+    margin-bottom: 30px;
+  }
+
+  &__ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 40px; }
+
+  &__stats {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    gap: 28px;
+    @include respond(sm) { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  &__stat {
+    strong { display: block; font-size: 1.4rem; color: $brand-900; font-family: $font-display; }
+    span { font-size: 0.82rem; color: $ink-500; }
+  }
+
+  &__art {
+    @include card;
+    aspect-ratio: 4 / 3;
+    background: linear-gradient(135deg, $brand-700, $brand-500 55%, $accent 130%);
+    display: flex;
+    align-items: flex-end;
+    padding: 24px;
+    color: $surface-white;
+
+    span { font-size: 0.85rem; opacity: 0.85; }
+  }
+}

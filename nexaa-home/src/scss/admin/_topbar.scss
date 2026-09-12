@@ -1,0 +1,33 @@
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.admin-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 32px;
+  border-bottom: 1px solid $border;
+  background: $surface-white;
+  @include respond(sm) { padding: 14px 16px; }
+
+  &__title { font-weight: 600; font-size: 0.95rem; }
+  &__meta { font-size: 0.82rem; color: $ink-500; }
+
+  &__user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: $ink-700;
+  }
+
+  &__avatar {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: $brand-200;
+    color: $brand-900;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700;
+    font-size: 0.78rem;
+  }
+}

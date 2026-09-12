@@ -1,0 +1,24 @@
+@use '../base/variables' as *;
+
+.activity-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.activity-item {
+  display: flex;
+  gap: 12px;
+  font-size: 0.85rem;
+
+  &__dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: $brand-500;
+    margin-top: 6px;
+    flex-shrink: 0;
+  }
+
+  &__message { color: $ink-700; }
+  &__time { color: $ink-300; font-size: 0.76rem; margin-top: 2px; }
+}

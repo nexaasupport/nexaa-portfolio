@@ -1,0 +1,99 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+:root {
+  --accent: #{$accent};
+  --accent-light: #{$accent-light};
+  --accent2: #{$accent2};
+  --accent-tint: #{oklch(0.48 0.16 280 / 0.08)};
+  --accent2-tint: #{oklch(0.72 0.16 25 / 0.14)};
+  --accent-shadow: #{oklch(0.48 0.16 280 / 0.7)};
+  --accent-border: #{oklch(0.48 0.16 280 / 0.3)};
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+body {
+  margin: 0;
+  background: $surface;
+  font-family: $font-body;
+  color: $text;
+}
+
+h1, h2, h3 {
+  @include display;
+  margin: 0;
+}
+
+em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+[data-reveal] {
+  @include reveal;
+}
+
+.tag-mono {
+  @include mono;
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.btn {
+  @include display;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s, border-color 0.2s, box-shadow 0.2s;
+
+  &--pill {
+    font-size: 13.5px;
+    padding: 10px 16px;
+    border-radius: 999px;
+  }
+
+  &--gradient {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: $surface-white;
+  }
+
+  &--outline {
+    border: 1px solid oklch(0.24 0.015 260 / 0.18);
+    &:hover {
+      border-color: oklch(0.24 0.015 260 / 0.45);
+    }
+  }
+
+  &--dark {
+    background: $text;
+    color: $surface-white;
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  &--accent2 {
+    background: var(--accent2);
+    color: $surface-white;
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}

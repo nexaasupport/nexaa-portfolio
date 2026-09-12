@@ -1,0 +1,114 @@
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: oklch(0.985 0.003 255 / 0.85);
+  backdrop-filter: blur(12px) saturate(1.4);
+  border-bottom: 1px solid oklch(0.24 0.015 260 / 0.08);
+
+  &__inner {
+    max-width: $max-width;
+    margin: 0 auto;
+    padding: 16px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+  }
+
+  &__mark {
+    width: 32px;
+    height: 32px;
+    border-radius: $radius-sm;
+    background: var(--accent);
+    color: $surface-white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include display;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  &__name {
+    @include display;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  &__nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 26px;
+    font-size: 14.5px;
+    font-weight: 500;
+    color: oklch(0.45 0.012 260);
+
+    a {
+      position: relative;
+      padding: 4px 0;
+      transition: color 0.2s;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 100%;
+        height: 2px;
+        border-radius: 1px;
+        background: var(--accent);
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.25s ease;
+      }
+
+      &:hover {
+        color: $text;
+
+        &::after {
+          transform: scaleX(1);
+          transform-origin: left;
+        }
+      }
+
+      &.is-active {
+        color: var(--accent);
+        font-weight: 600;
+
+        &::after {
+          transform: scaleX(1);
+          transform-origin: left;
+        }
+      }
+    }
+  }
+
+  &__cta {
+    @include display;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: $radius-sm;
+    background: var(--accent);
+    color: $surface-white;
+    box-shadow: 0 10px 22px -12px var(--accent-shadow);
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 26px -12px var(--accent-shadow);
+    }
+  }
+}
