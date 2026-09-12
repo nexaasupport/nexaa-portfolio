@@ -1,6 +1,7 @@
 import { qs } from '../lib/dom.js'
 import { getServices } from '../lib/store.js'
 import { icon } from './icons.js'
+import { heroIllustration } from './illustrations.js'
 import { nav, heroStats, steps, workGallery, plans, testimonials } from './content.js'
 
 export function renderNav() {
@@ -15,6 +16,12 @@ export function renderHeroStats() {
   el.innerHTML = heroStats
     .map((s) => `<div class="hero__stat"><strong>${s.value}</strong><span>${s.label}</span></div>`)
     .join('')
+}
+
+export function renderHeroArt() {
+  const el = qs('[data-hero-art]')
+  if (!el) return
+  el.innerHTML = heroIllustration()
 }
 
 export function renderServices() {
@@ -56,7 +63,16 @@ export function renderWork() {
   const el = qs('[data-work]')
   if (!el) return
   el.innerHTML = workGallery
-    .map((w) => `<div class="work-card work-card--${w.tone}"><span>${w.label}</span></div>`)
+    .map(
+      (w) => `
+      <div class="work-card work-card--${w.tone}${w.wide ? ' work-card--wide' : ''}">
+        <div class="work-card__icon">${icon(w.icon, 28, { tone: 'inverse' })}</div>
+        <div class="work-card__text">
+          <span class="work-card__label">${w.label}</span>
+          <span class="work-card__descriptor">${w.descriptor}</span>
+        </div>
+      </div>`
+    )
     .join('')
 }
 
@@ -98,6 +114,7 @@ export function renderTestimonials() {
 export function renderAll() {
   renderNav()
   renderHeroStats()
+  renderHeroArt()
   renderServices()
   renderSteps()
   renderWork()

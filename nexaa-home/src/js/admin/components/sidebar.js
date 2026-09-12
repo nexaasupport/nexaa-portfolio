@@ -10,7 +10,10 @@ const LINKS = [
 export function renderSidebar() {
   return `
     <aside class="admin-sidebar">
-      <a class="admin-sidebar__logo" href="/">Nexaa Home</a>
+      <a class="admin-sidebar__logo" href="/">
+        <img src="/logo-mark.svg" alt="" width="20" height="20" />
+        Nexaa Home
+      </a>
       <nav class="admin-sidebar__nav">
         ${LINKS.map(
           (l) => `<a class="admin-sidebar__link" href="#/${l.route}" data-route-link="${l.route}">${l.label}</a>`

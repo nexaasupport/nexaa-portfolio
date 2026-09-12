@@ -19,22 +19,32 @@
   gap: 20px;
   @include respond(lg) { grid-template-columns: repeat(2, 1fr); }
   @include respond(sm) { grid-template-columns: 1fr; }
+
+  .service-card:first-child {
+    grid-column: span 2;
+    @include respond(sm) { grid-column: span 1; }
+  }
 }
 
 .service-card {
   @include card;
-  padding: 26px;
-  transition: transform $transition, box-shadow $transition;
+  @include card-hover;
+  padding: 28px;
 
-  &:hover { transform: translateY(-4px); box-shadow: $shadow-md; }
+  &:hover {
+    .service-card__icon { transform: scale(1.08); color: $accent-dark; }
+  }
 
   &__icon {
-    width: 44px; height: 44px;
+    width: 52px; height: 52px;
     border-radius: $radius-sm;
     background: $brand-200;
+    border: 1px solid $brand-200;
+    box-shadow: $shadow-sm;
     color: $brand-900;
     display: flex; align-items: center; justify-content: center;
     margin-bottom: 16px;
+    transition: transform $transition, color $transition;
   }
 
   h3 { font-size: 1.05rem; margin-bottom: 8px; }

@@ -1,24 +1,37 @@
-// Palette: "Indigo"
-$accent: oklch(0.48 0.16 280);
-$accent-light: oklch(0.7 0.14 280);
-$accent2: oklch(0.72 0.16 25);
+// Palette: warm off-white + navy + single accent, matching the Claude Design mockup
+$navy: #0b2942;
+$ink: #132433;
+$text2: #3a4c5c;
+$text3: #5c6d7c;
+$text4: #8a97a3;
+$text5: #a8b3bd;
 
-$surface: oklch(0.985 0.003 255);
-$surface-white: oklch(1 0 0);
-$text: oklch(0.24 0.015 260);
+$surface: #fbfaf7;
+$surface-white: #fff;
+$surface-tan: #f1ede6;
 
-$ink-900: oklch(0.19 0.018 260);
-$ink-800: oklch(0.22 0.02 260);
-$ink-700: oklch(0.26 0.02 260);
+$stripe-a: #eee7db;
+$stripe-b: #e6ddcd;
+$stripe-text: #8a7d68;
+
+$accent: #ef852e;
+$accent-dark: #d4622a;
 
 $success: oklch(0.8 0.14 155);
 $error: oklch(0.72 0.16 25);
-$status-neutral: oklch(0.75 0.01 260);
+$status-neutral: $text3;
 
 $max-width: 1200px;
-$radius-sm: 8px;
-$radius-md: 14px;
-$radius-lg: 16px;
+$radius-pill: 100px;
+$radius-lg: 20px;
+$radius-card: 18px;
+$radius-md: 16px;
+$radius-sm: 10px;
+$radius-xs: 9px;
+
+$shadow-sm: 0 4px 14px -8px rgba(11, 41, 66, 0.12);
+$shadow-md: 0 16px 32px -12px rgba(11, 41, 66, 0.2);
+$shadow-lg: 0 30px 60px -24px rgba(11, 41, 66, 0.35);
 
 $font-display: 'Space Grotesk', 'Manrope', sans-serif;
 $font-body: 'Manrope', sans-serif;

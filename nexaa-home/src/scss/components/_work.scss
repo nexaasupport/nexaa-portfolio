@@ -11,27 +11,56 @@
 
 .work-card {
   @include card;
+  @include card-hover;
   aspect-ratio: 4 / 3;
   overflow: hidden;
   position: relative;
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 12px;
   padding: 18px;
   color: $surface-white;
-  background: linear-gradient(155deg, var(--tone-a), var(--tone-b));
+  background: var(--tone);
 
-  span {
-    font-size: 0.88rem;
-    font-weight: 600;
-    background: oklch(0.15 0.02 255 / 0.35);
-    padding: 6px 12px;
-    border-radius: $radius-pill;
+  &--wide {
+    grid-column: span 2;
+    aspect-ratio: 16 / 9;
+    @include respond(sm) { grid-column: span 1; aspect-ratio: 4 / 3; }
+  }
+
+  &__icon {
+    align-self: flex-start;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: oklch(1 0 0 / 0.18);
+    border: 1px solid oklch(1 0 0 / 0.3);
     backdrop-filter: blur(4px);
   }
 
-  &--1 { --tone-a: #{$brand-700}; --tone-b: #{$brand-500}; }
-  &--2 { --tone-a: #{$brand-500}; --tone-b: #{$accent}; }
-  &--3 { --tone-a: #{$accent-dark}; --tone-b: #{$brand-700}; }
-  &--4 { --tone-a: #{$brand-900}; --tone-b: #{$brand-500}; }
-  &--5 { --tone-a: #{$brand-500}; --tone-b: #{$brand-900}; }
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__label {
+    font-size: 0.94rem;
+    font-weight: 700;
+  }
+
+  &__descriptor {
+    font-size: 0.78rem;
+    color: oklch(1 0 0 / 0.8);
+  }
+
+  &--1 { --tone: #{$brand-700}; }
+  &--2 { --tone: #{$brand-500}; }
+  &--3 { --tone: #{$accent-dark}; }
+  &--4 { --tone: #{$brand-900}; }
+  &--5 { --tone: #{$brand-700}; }
 }

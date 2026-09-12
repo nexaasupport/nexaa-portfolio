@@ -16,5 +16,5 @@ const ICON_PATHS = {
 
 export function svgIcon(name, { color = 'currentColor', size = 20 } = {}) {
   const d = ICON_PATHS[name] || ICON_PATHS.spark
-  return `<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" stroke="${color}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="${d}"/></svg>`
+  return `<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" stroke="${color}" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="${d}"/></svg>`
 }

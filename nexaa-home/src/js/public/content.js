@@ -22,11 +22,11 @@ export const steps = [
 ]
 
 export const workGallery = [
-  { label: 'Kitchen remodel', tone: 1 },
-  { label: 'Bathroom repair', tone: 2 },
-  { label: 'AC installation', tone: 3 },
-  { label: 'Full home deep clean', tone: 4 },
-  { label: 'Electrical rewiring', tone: 5 },
+  { label: 'Kitchen remodel', descriptor: 'Full renovation, 3-week turnaround', tone: 1, icon: 'wrench' },
+  { label: 'Bathroom repair', descriptor: 'Leak fix and fixture replacement', tone: 2, icon: 'droplet' },
+  { label: 'AC installation', descriptor: 'Split-AC install, same-day service', tone: 3, icon: 'wind' },
+  { label: 'Full home deep clean', descriptor: 'Move-in ready in one visit', tone: 4, icon: 'sparkle', wide: true },
+  { label: 'Electrical rewiring', descriptor: 'Whole-home rewire, code compliant', tone: 5, icon: 'bolt' },
 ]
 
 export const plans = [

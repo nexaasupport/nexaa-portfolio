@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body { margin: 0; background: #fbfaf7; }
+    a { color: #0b2942; text-decoration: none; }
+    a:hover { color: #ef852e; }
+    * { box-sizing: border-box; }
+    ::selection { background: #ef852e; color: #fff; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  </style>
+</helmet>
+
+<div style="font-family:'Manrope',sans-serif; color:#132433; background:#fbfaf7; line-height:1.5; overflow-x:hidden;">
+
+  <!-- HEADER -->
+  <header style="position:sticky; top:0; z-index:50; background:rgba(251,250,247,0.92); backdrop-filter:blur(10px); border-bottom:1px solid rgba(11,41,66,0.08); box-shadow:0 1px 0 rgba(11,41,66,0.03), 0 8px 24px -16px rgba(11,41,66,0.15);">
+    <div style="max-width:1200px; margin:0 auto; padding:16px 24px; display:flex; align-items:center; justify-content:space-between; gap:24px;">
+      <a href="#top" style="display:flex; align-items:center; gap:10px;">
+<svg viewBox="0 0 100 100" width="32" height="32" style="flex-shrink:0;"><rect x="0" y="0" width="100" height="100" rx="20" fill="#0b2942"></rect><path d="M26 78 L26 22 L36 22 L36 78 Z M64 78 L64 22 L74 22 L74 78 Z M26 34 L36 34 L74 70 L74 78 L64 78 L26 42 Z" fill="{{ accentColor }}"></path></svg>
+        <span style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:19px; color:#0b2942; letter-spacing:-0.01em;">Nexaa</span>
+      </a>
+      <nav aria-label="Primary" style="display:flex; gap:28px; flex-wrap:wrap;">
+        <sc-for list="{{ nav }}" as="item" hint-placeholder-count="7">
+          <a href="{{ item.href }}" style="font-size:14.5px; font-weight:600; color:#132433;">{{ item.label }}</a>
+        </sc-for>
+      </nav>
+      <a href="#contact" style="font-family:'Space Grotesk',sans-serif; font-size:14px; font-weight:600; background:#0b2942; color:#fff; padding:10px 20px; border-radius:100px; white-space:nowrap; box-shadow:0 6px 16px -6px rgba(11,41,66,0.5); transition:background .2s, box-shadow .2s;" style-hover="background:{{ accentColor }}; box-shadow:0 8px 20px -6px rgba(239,133,46,0.5);">Start a project</a>
+    </div>
+  </header>
+
+  <div id="top">
+
+  <!-- HERO -->
+  <section style="max-width:1200px; margin:0 auto; padding:80px 24px 96px; display:grid; grid-template-columns:1.2fr 0.8fr; gap:56px; align-items:center;">
+    <div>
+      <div style="display:inline-flex; align-items:center; gap:8px; font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:#0b2942; background:#fff; border:1px solid rgba(11,41,66,0.14); border-radius:100px; padding:7px 14px 7px 10px; margin-bottom:28px;">
+        <span style="width:7px; height:7px; border-radius:50%; background:{{ accentColor }}; display:inline-block;"></span>
+        Faster delivery · Standard pricing
+      </div>
+      <h1 style="font-family:'Space Grotesk',sans-serif; font-size:56px; line-height:1.06; font-weight:700; letter-spacing:-0.02em; color:#0b2942; margin:0 0 24px;">
+        We solve real <span style="color:{{ accentColor }};">business problems</span> with software.
+      </h1>
+      <p style="font-size:18px; color:#3a4c5c; max-width:560px; margin:0 0 16px;">Nexaa builds websites and internal software for organizations that need it working correctly the first time — delivered on a fixed timeline at a standard, published price.</p>
+      <p style="font-size:15.5px; color:#5c6d7c; max-width:560px; margin:0 0 36px;">No hourly guesswork, no scope creep. Every engagement runs on the same process and the same rate card, whether you're a five-person startup or a company replacing a system used by an entire team.</p>
+      <div style="display:flex; gap:14px; flex-wrap:wrap;">
+        <a href="#contact" style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15px; background:#0b2942; color:#fff; padding:14px 28px; border-radius:100px; box-shadow:0 10px 24px -8px rgba(11,41,66,0.45); transition:transform .2s, box-shadow .2s;" style-hover="transform:translateY(-2px); box-shadow:0 14px 28px -8px rgba(11,41,66,0.5);">Start a Project</a>
+        <a href="#work" style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15px; color:#0b2942; padding:14px 8px; border-bottom:2px solid rgba(11,41,66,0.25); transition:border-color .2s;" style-hover="border-color:{{ accentColor }};">View Our Work →</a>
+      </div>
+    </div>
+    <div style="background:#0b2942; border-radius:20px; padding:36px 32px; display:flex; flex-direction:column; gap:24px; box-shadow:0 30px 60px -24px rgba(11,41,66,0.35), 0 0 0 1px rgba(11,41,66,0.06);">
+      <sc-for list="{{ heroStats }}" as="item" hint-placeholder-count="3">
+        <div style="border-bottom:1px solid rgba(255,255,255,0.14); padding-bottom:18px;">
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:rgba(255,255,255,0.55); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:8px;">{{ item.label }}</div>
+          <div style="font-family:'Space Grotesk',sans-serif; font-size:22px; font-weight:600; color:#fff;">{{ item.value }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div style="border-top:1px solid rgba(11,41,66,0.08); border-bottom:1px solid rgba(11,41,66,0.08); overflow:hidden; padding:20px 0; background:#fff;">
+    <div style="display:flex; width:max-content; animation:marquee 28s linear infinite; gap:56px;">
+      <sc-for list="{{ marqueeItems }}" as="item" hint-placeholder-count="18">
+        <span style="font-family:'Space Grotesk',sans-serif; font-size:15px; font-weight:600; color:#8a97a3; white-space:nowrap;">{{ item }}</span>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- TECH -->
+  <section id="tech" style="max-width:1200px; margin:0 auto; padding:96px 24px;">
+    <h2 style="font-family:'Space Grotesk',sans-serif; font-size:34px; font-weight:700; color:#0b2942; margin:0 0 12px; letter-spacing:-0.01em;">Built with modern technology</h2>
+    <p style="font-size:16px; color:#5c6d7c; max-width:600px; margin:0 0 40px;">React.js and Next.js lead the stack, backed by typed, tested backend tooling — chosen for reliability at scale, not novelty.</p>
+    <div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; margin-bottom:28px;">
+      <sc-for list="{{ primaryTech }}" as="item" hint-placeholder-count="2">
+        <div style="background:#fff; border:1px solid rgba(11,41,66,0.1); border-radius:16px; padding:28px; display:flex; gap:18px; align-items:flex-start; box-shadow:0 4px 14px -8px rgba(11,41,66,0.12); transition:transform .2s, box-shadow .2s;" style-hover="transform:translateY(-3px); box-shadow:0 16px 32px -12px rgba(11,41,66,0.2);">
+          <div style="width:44px; height:44px; border-radius:10px; background:#f1ede6; display:flex; align-items:center; justify-content:center; flex-shrink:0; color:#0b2942;" dangerouslySetInnerHTML="{{ item.iconHtml }}"></div>
+          <div>
+            <div style="font-family:'Space Grotesk',sans-serif; font-size:19px; font-weight:600; color:#0b2942; margin-bottom:6px;">{{ item.name }}</div>
+            <div style="font-size:14.5px; color:#5c6d7c;">{{ item.note }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+      <sc-for list="{{ otherTech }}" as="item" hint-placeholder-count="9">
+        <span style="font-family:'IBM Plex Mono',monospace; font-size:13px; color:#0b2942; background:#fff; border:1px solid rgba(11,41,66,0.12); border-radius:100px; padding:8px 16px;">{{ item }}</span>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" style="background:#fff; padding:96px 0; border-top:1px solid rgba(11,41,66,0.08); border-bottom:1px solid rgba(11,41,66,0.08);">
+    <div style="max-width:1200px; margin:0 auto; padding:0 24px;">
+      <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:24px; margin-bottom:44px; flex-wrap:wrap;">
+        <h2 style="font-family:'Space Grotesk',sans-serif; font-size:34px; font-weight:700; color:#0b2942; margin:0; letter-spacing:-0.01em;">Services</h2>
+        <p style="font-size:15.5px; color:#5c6d7c; max-width:420px; margin:0;">Built for organizations that need a working system, not a longer meeting about one.</p>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1px; background:rgba(11,41,66,0.1); border:1px solid rgba(11,41,66,0.1); border-radius:16px; overflow:hidden;">
+        <sc-for list="{{ services }}" as="item" hint-placeholder-count="7">
+          <div style="background:#fff; padding:30px 26px; transition:background .2s;" style-hover="background:#fbfaf7;">
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#a8b3bd; margin-bottom:16px;">{{ item.num }}</div>
+            <div style="width:36px; height:36px; border-radius:9px; background:{{ item.iconBg }}; display:flex; align-items:center; justify-content:center; margin-bottom:16px; color:{{ item.iconColor }};" dangerouslySetInnerHTML="{{ item.iconHtml }}"></div>
+            <div style="font-family:'Space Grotesk',sans-serif; font-size:17px; font-weight:600; color:#0b2942; margin-bottom:10px;">{{ item.title }}</div>
+            <div style="font-size:14.5px; color:#5c6d7c; line-height:1.55;">{{ item.body }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work" style="max-width:1200px; margin:0 auto; padding:96px 24px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:44px; flex-wrap:wrap; gap:16px;">
+      <h2 style="font-family:'Space Grotesk',sans-serif; font-size:34px; font-weight:700; color:#0b2942; margin:0; letter-spacing:-0.01em;">Selected work</h2>
+      <span style="font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:#5c6d7c; background:#f1ede6; padding:6px 14px; border-radius:100px;">Self-initiated builds</span>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:24px;">
+      <sc-for list="{{ projects }}" as="item" hint-placeholder-count="3">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0; background:#fff; border:1px solid rgba(11,41,66,0.1); border-radius:18px; overflow:hidden; box-shadow:0 4px 16px -10px rgba(11,41,66,0.14); transition:box-shadow .2s, transform .2s;" style-hover="transform:translateY(-3px); box-shadow:0 20px 40px -16px rgba(11,41,66,0.22);">
+          <div style="background:repeating-linear-gradient(135deg,#eee7db,#eee7db 10px,#e6ddcd 10px,#e6ddcd 20px); min-height:220px; display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:#8a7d68; padding:20px; text-align:center;">{{ item.shot }}</div>
+          <div style="padding:32px;">
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:{{ accentColor }}; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:10px;">{{ item.label }}</div>
+            <div style="font-family:'Space Grotesk',sans-serif; font-size:22px; font-weight:600; color:#0b2942; margin-bottom:8px;">{{ item.name }}</div>
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#8a97a3; margin-bottom:16px;">{{ item.tech }}</div>
+            <div style="font-size:14px; color:#3a4c5c; margin-bottom:10px;"><strong style="color:#0b2942;">Problem: </strong>{{ item.brief }}</div>
+            <div style="font-size:14px; color:#3a4c5c; margin-bottom:16px;"><strong style="color:#0b2942;">Outcome: </strong>{{ item.outcome }}</div>
+            <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px;">
+              <sc-for list="{{ item.features }}" as="feat" hint-placeholder-count="5">
+                <span style="font-size:12.5px; color:#0b2942; background:#f1ede6; padding:5px 12px; border-radius:100px;">{{ feat }}</span>
+              </sc-for>
+            </div>
+            <div style="display:flex; gap:16px;">
+              <a href="{{ item.repo }}" style="font-size:13.5px; font-weight:600; color:#0b2942; border-bottom:1px solid rgba(11,41,66,0.3);">Repository</a>
+              <sc-if value="{{ item.demo }}" hint-placeholder-val="{{ true }}">
+                <a href="{{ item.demo }}" style="font-size:13.5px; font-weight:600; color:#0b2942; border-bottom:1px solid rgba(11,41,66,0.3);">Live demo</a>
+              </sc-if>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- PACKAGES -->
+  <section id="packages" style="background:#0b2942; padding:96px 0;">
+    <div style="max-width:1200px; margin:0 auto; padding:0 24px;">
+      <h2 style="font-family:'Space Grotesk',sans-serif; font-size:34px; font-weight:700; color:#fff; margin:0 0 12px; letter-spacing:-0.01em;">Standard-priced packages</h2>
+      <p style="font-size:16px; color:rgba(255,255,255,0.65); max-width:620px; margin:0 0 44px;">One rate card for every client. Scope, deliverables and handover are agreed in writing before the build starts, so the quoted price is the price you pay.</p>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px;">
+        <sc-for list="{{ packages }}" as="item" hint-placeholder-count="3">
+          <div style="background:{{ item.bg }}; border:1px solid {{ item.border }}; border-radius:18px; padding:32px; display:flex; flex-direction:column; transition:transform .2s, box-shadow .2s;" style-hover="transform:translateY(-4px); box-shadow:0 24px 48px -16px rgba(0,0,0,0.35);">
+            <div style="width:40px; height:40px; border-radius:10px; background:{{ item.iconBg }}; display:flex; align-items:center; justify-content:center; margin-bottom:22px; color:{{ item.iconColor }};" dangerouslySetInnerHTML="{{ item.iconHtml }}"></div>
+            <div style="font-family:'Space Grotesk',sans-serif; font-size:21px; font-weight:600; color:{{ item.textColor }}; margin-bottom:10px;">{{ item.name }}</div>
+            <div style="font-size:14px; color:{{ item.subColor }}; margin-bottom:22px; flex-grow:1;">{{ item.scope }}</div>
+            <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:26px;">
+              <sc-for list="{{ item.includes }}" as="inc" hint-placeholder-count="4">
+                <div style="font-size:13.5px; color:{{ item.textColor }}; display:flex; gap:8px; align-items:flex-start;">
+                  <span style="color:{{ accentColor }};">✓</span>{{ inc }}
+                </div>
+              </sc-for>
+            </div>
+            <div style="border-top:1px solid {{ item.border }}; padding-top:20px; display:flex; justify-content:space-between; font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:{{ item.subColor }};">
+              <span>{{ item.timeline }}</span>
+              <span>{{ item.price }}</span>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY / ABOUT -->
+  <section id="about" style="max-width:1200px; margin:0 auto; padding:96px 24px;">
+    <h3 style="font-family:'Space Grotesk',sans-serif; font-size:30px; font-weight:700; color:#0b2942; margin:0 0 40px; letter-spacing:-0.01em;">Why organizations choose Nexaa</h3>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:28px 32px;">
+      <sc-for list="{{ why }}" as="item" hint-placeholder-count="6">
+        <div style="display:flex; gap:16px; align-items:flex-start;">
+          <div style="width:38px; height:38px; border-radius:9px; background:{{ item.iconBg }}; display:flex; align-items:center; justify-content:center; flex-shrink:0; color:{{ item.iconColor }};" dangerouslySetInnerHTML="{{ item.iconHtml }}"></div>
+          <div>
+            <div style="font-family:'Space Grotesk',sans-serif; font-size:16.5px; font-weight:600; color:#0b2942; margin-bottom:6px;">{{ item.title }}</div>
+            <div style="font-size:14px; color:#5c6d7c; line-height:1.55;">{{ item.body }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section style="background:#fff; padding:96px 0; border-top:1px solid rgba(11,41,66,0.08); border-bottom:1px solid rgba(11,41,66,0.08);">
+    <div style="max-width:1200px; margin:0 auto; padding:0 24px;">
+      <h2 style="font-family:'Space Grotesk',sans-serif; font-size:34px; font-weight:700; color:#0b2942; margin:0 0 44px; letter-spacing:-0.01em;">Process</h2>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:0;">
+        <sc-for list="{{ process }}" as="item" hint-placeholder-count="4">
+          <div style="padding:0 24px 0 0; border-left:2px solid rgba(11,41,66,0.1); padding-left:20px;">
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:13px; color:{{ accentColor }}; margin-bottom:14px;">{{ item.num }}</div>
+            <div style="font-family:'Space Grotesk',sans-serif; font-size:18px; font-weight:600; color:#0b2942; margin-bottom:8px;">{{ item.title }}</div>
+            <div style="font-size:14px; color:#5c6d7c; line-height:1.55;">{{ item.body }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" style="max-width:900px; margin:0 auto; padding:96px 24px;">
+    <h2 style="font-family:'Space Grotesk',sans-serif; font-size:34px; font-weight:700; color:#0b2942; margin:0 0 40px; letter-spacing:-0.01em; text-align:center;">Questions organizations ask</h2>
+    <div style="display:flex; flex-direction:column; gap:1px; background:rgba(11,41,66,0.1); border:1px solid rgba(11,41,66,0.1); border-radius:14px; overflow:hidden;">
+      <sc-for list="{{ faqs }}" as="item" hint-placeholder-count="6">
+        <div style="background:#fff; padding:22px 26px; cursor:pointer; transition:background .15s;" style-hover="background:#fbfaf7;" onClick="{{ item.toggle }}">
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:16px;">
+            <span style="font-family:'Space Grotesk',sans-serif; font-size:16px; font-weight:600; color:#0b2942;">{{ item.q }}</span>
+            <span style="font-size:20px; color:{{ accentColor }}; flex-shrink:0;">{{ item.symbol }}</span>
+          </div>
+          <sc-if value="{{ item.open }}" hint-placeholder-val="{{ false }}">
+            <div style="font-size:14.5px; color:#5c6d7c; margin-top:14px; line-height:1.6; max-width:680px;">{{ item.a }}</div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" style="background:#fbfaf7; padding:96px 0;">
+    <div style="max-width:1200px; margin:0 auto; padding:0 24px;">
+      <div style="text-align:center; max-width:640px; margin:0 auto 56px;">
+        <h2 style="font-family:'Space Grotesk',sans-serif; font-size:38px; font-weight:700; color:#0b2942; margin:0 0 16px; letter-spacing:-0.01em;">Have a process that's slowing your team down?</h2>
+        <p style="font-size:16px; color:#5c6d7c; margin:0;">Describe the problem. You'll get back a scope, a timeline and the standard price for it.</p>
+      </div>
+      <div style="display:grid; grid-template-columns:0.8fr 1.2fr; gap:0; background:#fff; border:1px solid rgba(11,41,66,0.1); border-radius:20px; overflow:hidden; box-shadow:0 30px 60px -30px rgba(11,41,66,0.2);">
+        <div style="background:#0b2942; padding:44px 36px; display:flex; flex-direction:column; justify-content:space-between;">
+          <div>
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:rgba(255,255,255,0.45); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:24px;">Contact details</div>
+            <div style="display:flex; flex-direction:column; gap:22px;">
+              <div>
+                <div style="font-size:12px; color:rgba(255,255,255,0.45); margin-bottom:4px;">Email</div>
+                <a href="mailto:nexaa.support@gmail.com" style="font-family:'Space Grotesk',sans-serif; font-size:16px; font-weight:600; color:#fff;">nexaa.support@gmail.com</a>
+              </div>
+              <div>
+                <div style="font-size:12px; color:rgba(255,255,255,0.45); margin-bottom:4px;">Phone</div>
+                <a href="tel:+919488479124" style="font-family:'Space Grotesk',sans-serif; font-size:16px; font-weight:600; color:#fff;">+91 94884 79124</a>
+              </div>
+              <div>
+                <div style="font-size:12px; color:rgba(255,255,255,0.45); margin-bottom:4px;">Location</div>
+                <div style="font-family:'Space Grotesk',sans-serif; font-size:16px; font-weight:600; color:#fff;">Coimbatore, India</div>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex; gap:10px; margin-top:36px;">
+            <sc-for list="{{ socials }}" as="item" hint-placeholder-count="3">
+              <a href="{{ item.href }}" style="width:38px; height:38px; border-radius:10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.14); display:flex; align-items:center; justify-content:center; color:#fff; font-family:'IBM Plex Mono',monospace; font-size:11px; transition:background .2s;" style-hover="background:{{ accentColor }}; border-color:{{ accentColor }};">{{ item.label }}</a>
+            </sc-for>
+          </div>
+        </div>
+        <form onSubmit="{{ handleSubmit }}" style="padding:44px 40px; display:grid; grid-template-columns:1fr 1fr; gap:18px;">
+          <label style="grid-column:span 1; font-size:12.5px; font-weight:600; color:#0b2942; display:flex; flex-direction:column; gap:6px;">Name
+            <input name="name" type="text" placeholder="Your name" style="font-family:inherit; font-size:14px; padding:12px 14px; border:1px solid rgba(11,41,66,0.14); border-radius:9px; background:#fbfaf7;" />
+          </label>
+          <label style="grid-column:span 1; font-size:12.5px; font-weight:600; color:#0b2942; display:flex; flex-direction:column; gap:6px;">Email
+            <input name="email" type="email" placeholder="you@company.com" style="font-family:inherit; font-size:14px; padding:12px 14px; border:1px solid rgba(11,41,66,0.14); border-radius:9px; background:#fbfaf7;" />
+          </label>
+          <label style="grid-column:span 2; font-size:12.5px; font-weight:600; color:#0b2942; display:flex; flex-direction:column; gap:6px;">Organization
+            <input name="company" type="text" placeholder="Company or team name" style="font-family:inherit; font-size:14px; padding:12px 14px; border:1px solid rgba(11,41,66,0.14); border-radius:9px; background:#fbfaf7;" />
+          </label>
+          <label style="grid-column:span 1; font-size:12.5px; font-weight:600; color:#0b2942; display:flex; flex-direction:column; gap:6px;">Project Type
+            <select name="type" style="font-family:inherit; font-size:14px; padding:12px 14px; border:1px solid rgba(11,41,66,0.14); border-radius:9px; background:#fbfaf7;">
+              <sc-for list="{{ projectTypes }}" as="pt" hint-placeholder-count="9"><option>{{ pt }}</option></sc-for>
+            </select>
+          </label>
+          <label style="grid-column:span 1; font-size:12.5px; font-weight:600; color:#0b2942; display:flex; flex-direction:column; gap:6px;">Budget
+            <select name="budget" style="font-family:inherit; font-size:14px; padding:12px 14px; border:1px solid rgba(11,41,66,0.14); border-radius:9px; background:#fbfaf7;">
+              <sc-for list="{{ budgets }}" as="bg" hint-placeholder-count="5"><option>{{ bg }}</option></sc-for>
+            </select>
+          </label>
+          <label style="grid-column:span 2; font-size:12.5px; font-weight:600; color:#0b2942; display:flex; flex-direction:column; gap:6px;">Message
+            <textarea name="message" rows="4" placeholder="What's the problem you need solved?" style="font-family:inherit; font-size:14px; padding:12px 14px; border:1px solid rgba(11,41,66,0.14); border-radius:9px; background:#fbfaf7; resize:vertical;"></textarea>
+          </label>
+          <div style="grid-column:span 2; display:flex; align-items:center; gap:16px; margin-top:4px;">
+            <button type="submit" style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:14.5px; background:#0b2942; color:#fff; padding:13px 26px; border-radius:100px; border:none; cursor:pointer; box-shadow:0 8px 18px -6px rgba(11,41,66,0.4); transition:background .2s;" style-hover="background:{{ accentColor }};">Send message</button>
+            <span style="font-size:13px; color:#5c6d7c;">{{ formStatus }}</span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:#0b2942; padding:100px 0 0;">
+    <div style="max-width:1200px; margin:0 auto; padding:0 24px;">
+      <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:40px; flex-wrap:wrap; padding-bottom:64px; border-bottom:1px solid rgba(255,255,255,0.1);">
+        <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(40px,6vw,84px); line-height:0.98; letter-spacing:-0.02em; color:#fff; margin:0;">Let's build<br/>something<span style="color:{{ accentColor }};">.</span></h2>
+        <a href="#contact" style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16px; background:{{ accentColor }}; color:#0b2942; padding:16px 32px; border-radius:100px; white-space:nowrap; transition:transform .2s;" style-hover="transform:translateY(-2px);">Start a project →</a>
+      </div>
+      <div style="display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr; gap:40px; padding:64px 0;">
+        <div>
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:20px;">
+            <svg viewBox="0 0 100 100" width="34" height="34" style="flex-shrink:0;"><rect x="0" y="0" width="100" height="100" rx="20" fill="#0b2942"></rect><path d="M26 78 L26 22 L36 22 L36 78 Z M64 78 L64 22 L74 22 L74 78 Z M26 34 L36 34 L74 70 L74 78 L64 78 L26 42 Z" fill="{{ accentColor }}"></path></svg>
+            <span style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:22px; color:#fff;">Nexaa</span>
+          </div>
+          <div style="font-size:15px; color:rgba(255,255,255,0.55); max-width:300px; line-height:1.65;">Websites and software for organizations, built on a fixed process and a standard, published price.</div>
+        </div>
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:22px;">Navigate</div>
+          <nav style="display:flex; flex-direction:column; gap:16px;">
+            <sc-for list="{{ nav }}" as="item" hint-placeholder-count="7">
+              <a href="{{ item.href }}" style="font-family:'Space Grotesk',sans-serif; font-size:17px; font-weight:500; color:rgba(255,255,255,0.8);">{{ item.label }}</a>
+            </sc-for>
+          </nav>
+        </div>
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:22px;">Services</div>
+          <nav style="display:flex; flex-direction:column; gap:16px;">
+            <a href="#services" style="font-family:'Space Grotesk',sans-serif; font-size:17px; font-weight:500; color:rgba(255,255,255,0.8);">Web Design</a>
+            <a href="#services" style="font-family:'Space Grotesk',sans-serif; font-size:17px; font-weight:500; color:rgba(255,255,255,0.8);">Web Applications</a>
+            <a href="#services" style="font-family:'Space Grotesk',sans-serif; font-size:17px; font-weight:500; color:rgba(255,255,255,0.8);">Full-Stack</a>
+            <a href="#services" style="font-family:'Space Grotesk',sans-serif; font-size:17px; font-weight:500; color:rgba(255,255,255,0.8);">Maintenance</a>
+          </nav>
+        </div>
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:22px;">Contact</div>
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            <a href="mailto:nexaa.support@gmail.com" style="font-family:'Space Grotesk',sans-serif; font-size:17px; font-weight:500; color:rgba(255,255,255,0.8);">nexaa.support@gmail.com</a>
+            <a href="tel:+919488479124" style="font-family:'Space Grotesk',sans-serif; font-size:17px; font-weight:500; color:rgba(255,255,255,0.8);">+91 94884 79124</a>
+            <span style="font-family:'Space Grotesk',sans-serif; font-size:17px; font-weight:500; color:rgba(255,255,255,0.8);">Coimbatore, India</span>
+          </div>
+        </div>
+      </div>
+      <div style="padding:28px 0; border-top:1px solid rgba(255,255,255,0.1); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+        <span style="font-size:13.5px; color:rgba(255,255,255,0.4);">© 2026 Nexaa. All rights reserved.</span>
+        <span style="font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:rgba(255,255,255,0.4);">Build. Connect. Grow.</span>
+      </div>
+    </div>
+  </footer>
+
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;accentColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#ef852e&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#ef852e&quot;,&quot;#d4622a&quot;,&quot;#2f9e6e&quot;,&quot;#3f6fd4&quot;]}}">
+const ICONS = {
+  react: 'M12 3c1.5 2 2.7 4 3.4 6M12 3c-1.5 2-2.7 4-3.4 6M12 21c1.5-2 2.7-4 3.4-6M12 21c-1.5-2-2.7-4-3.4-6M3.5 8.5c2.3-.9 4.6-1.4 6.8-1.7M3.5 8.5c-.3 2.4-.1 4.8.6 7M3.5 8.5c1.6 1.8 3.4 3.4 5.4 4.8M20.5 8.5c-2.3-.9-4.6-1.4-6.8-1.7M20.5 8.5c.3 2.4.1 4.8-.6 7M20.5 8.5c-1.6 1.8-3.4 3.4-5.4 4.8',
+  layers: 'M12 3l8 4-8 4-8-4 8-4zM4 12l8 4 8-4M4 16l8 4 8-4',
+  globe: 'M12 3a9 9 0 100 18 9 9 0 000-18zM3 12h18',
+  stack: 'M4 7l8-4 8 4-8 4-8-4zM4 12l8 4 8-4M4 17l8 4 8-4',
+  api: 'M8 4H5a1 1 0 00-1 1v3M16 4h3a1 1 0 011 1v3M8 20H5a1 1 0 01-1-1v-3M16 20h3a1 1 0 001-1v-3M9 9h6v6H9z',
+  redo: 'M4 12a8 8 0 1114.6 4.6M20 12l-3-1 1-3',
+  bug: 'M9 9l-2-3M15 9l2-3M9 5a3 3 0 116 0M6 12h12M6 12a6 6 0 1012 0M6 12a6 6 0 016-6 6 6 0 016 6',
+  spark: 'M12 2v6M12 16v6M2 12h6M16 12h6M5 5l4 4M19 5l-4 4M5 19l4-4M19 19l-4-4',
+  check: 'M4 12h16M4 6h16M4 18h10',
+  shield: 'M12 3l7 3v6c0 5-3.2 8-7 9-3.8-1-7-4-7-9V6l7-3z',
+  chat: 'M4 5h16v11H8l-4 4V5z',
+  bolt: 'M13 2L4 14h6l-1 8 9-12h-6z',
+}
+function icon(name, color) {
+  const d = ICONS[name] || ICONS.spark
+  return { __html: `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="${color}" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="${d}"/></svg>` }
+}
+
+class Component extends DCLogic {
+  state = {
+    openFaq: null,
+    formStatus: '',
+  }
+
+  faqData = [
+    { q: 'Who is this for?', a: 'Organizations — small businesses, startups and teams — with an operational problem that software can fix, not just an idea for a website.' },
+    { q: 'Why a standard price instead of a quote?', a: "The same package costs the same for everyone. You see the price before you commit, and it doesn't move once work starts." },
+    { q: 'How fast is delivery?', a: 'Faster than a from-scratch build, because a fixed process and reusable components remove most of the setup time. Exact timelines are listed per package.' },
+    { q: 'Do we own the code?', a: 'Yes — the repository, deployment access and documentation transfer to you at handover.' },
+    { q: 'Can you fix or extend an existing system?', a: 'Yes. Redesigns, bug fixes and maintenance on existing websites and applications run on the same standard rate card.' },
+    { q: 'How are payments handled?', a: '[ add your payment terms — e.g. deposit up front, balance on delivery ]' },
+  ]
+
+  renderVals() {
+    const accentColor = this.props.accentColor ?? '#ef852e'
+    const navy = '#0b2942'
+
+    return {
+      accentColor,
+      nav: [
+        { label: 'Home', href: '#top' }, { label: 'Services', href: '#services' }, { label: 'Work', href: '#work' },
+        { label: 'Packages', href: '#packages' }, { label: 'About', href: '#about' }, { label: 'FAQ', href: '#faq' }, { label: 'Contact', href: '#contact' },
+      ],
+      heroStats: [
+        { label: 'Delivery', value: 'Fixed timeline' },
+        { label: 'Pricing', value: 'Standard, published' },
+        { label: 'Stack', value: 'Modern & scalable' },
+      ],
+      marqueeItems: Array(2).fill(['React.js', 'Next.js', 'TypeScript', 'Node.js', 'Express.js', 'Tailwind CSS', 'Redux Toolkit', 'REST APIs', 'Git']).flat(),
+      primaryTech: [
+        { name: 'React.js', note: 'Core frontend library behind every Nexaa interface.', iconHtml: icon('react', navy) },
+        { name: 'Next.js', note: 'App Router, SSR and SEO-ready production builds.', iconHtml: icon('layers', navy) },
+      ],
+      otherTech: ['TypeScript', 'JavaScript', 'Node.js', 'Express.js', 'Tailwind CSS', 'Redux Toolkit', 'REST APIs', 'Git', 'GitHub'],
+      services: [
+        { num: '01', title: 'Website Design & Development', body: 'Fast, responsive websites built to load quickly, look credible and convert visitors into customers.', iconHtml: icon('react', navy), iconBg: '#f1ede6', iconColor: navy },
+        { num: '02', title: 'Web Application Development', body: 'Custom dashboards, portals and internal tools built around how your business actually works.', iconHtml: icon('layers', navy), iconBg: '#f1ede6', iconColor: navy },
+        { num: '03', title: 'Business Websites', body: 'Modern responsive websites designed to establish a strong, credible online presence.', iconHtml: icon('globe', navy), iconBg: '#f1ede6', iconColor: navy },
+        { num: '04', title: 'Full-Stack Development', body: 'Complete web applications with frontend, backend, APIs and database integration.', iconHtml: icon('stack', '#fff'), iconBg: accentColor, iconColor: '#fff' },
+        { num: '05', title: 'API & Backend Integration', body: 'Reliable, secure backend systems that connect your tools, data and services.', iconHtml: icon('api', '#fff'), iconBg: accentColor, iconColor: '#fff' },
+        { num: '06', title: 'Website Redesign', body: 'Rebuild outdated, slow websites into fast, modern, maintainable ones.', iconHtml: icon('redo', '#fff'), iconBg: accentColor, iconColor: '#fff' },
+        { num: '07', title: 'Ongoing Support & Maintenance', body: 'Continuous fixes, updates and improvements for existing websites and applications.', iconHtml: icon('bug', '#fff'), iconBg: accentColor, iconColor: '#fff' },
+      ],
+      projects: [
+        { name: 'Local Service Booking Platform', label: 'Demo Project', tech: 'Vanilla JS · Vite · SCSS', shot: 'screenshot: booking flow',
+          brief: 'Small service businesses lose bookings to phone tag and no-shows with no reminder system.',
+          outcome: 'Live services catalog and a real booking form that creates a customer + job record — built to replace a paper diary or shared spreadsheet.',
+          features: ['Live services catalog', 'Working booking form', 'Client-side validation', 'Feeds the ops dashboard', 'Mobile-first'],
+          repo: '#add-github-repo-link', demo: '/nexaa-home/' },
+        { name: 'Operations Dashboard', label: 'Demo Project', tech: 'Vanilla JS · Vite · SCSS', shot: 'screenshot: KPI dashboard',
+          brief: "Owners can't see daily revenue, bookings or no-shows without opening three different spreadsheets.",
+          outcome: "One screen with today's numbers, a live jobs table, technician assignment and payments — the daily check-in a manager actually opens.",
+          features: ['Live KPIs', 'Jobs/customers/technicians/payments', 'Assign & status workflow', 'Filterable tables', 'Hash-routed views'],
+          repo: '#add-github-repo-link', demo: '/nexaa-home/admin/' },
+        { name: 'Business Management System', label: 'Personal Project', tech: 'React.js · Node.js · Express.js', shot: 'screenshot: user management',
+          brief: 'Growing teams outgrow shared logins and manual record-keeping with no audit trail.',
+          outcome: 'Authentication, roles, full CRUD on records and an activity log — the backbone an organization runs staff and clients through.',
+          features: ['Authentication', 'Role-based access', 'CRUD operations', 'Activity log', 'REST API'],
+          repo: '#add-github-repo-link', demo: '#add-live-demo-link' },
+      ],
+      packages: [
+        { name: 'Landing Page', scope: 'A focused one-page site built to convert a single offer, launch or campaign.', iconHtml: icon('bolt', navy),
+          includes: ['Responsive one-page build', 'Contact form', 'Basic SEO metadata', 'Deploy + handover'],
+          timeline: '[ set typical timeline ]', price: '[ set standard price ]',
+          bg: 'rgba(255,255,255,0.05)', border: 'rgba(255,255,255,0.12)', iconBg: 'rgba(255,255,255,0.1)', iconColor: '#fff', textColor: '#fff', subColor: 'rgba(255,255,255,0.6)' },
+        { name: 'Business Website', scope: 'A multi-section site that gives an established organization a credible, professional presence.', iconHtml: icon('globe', navy),
+          includes: ['Up to 5 sections or pages', 'Modern, fast front-end build', 'SEO + Open Graph setup', 'One revision round', 'Deploy + handover'],
+          timeline: '[ set typical timeline ]', price: '[ set standard price ]',
+          bg: '#fff', border: '#fff', iconBg: accentColor, iconColor: '#fff', textColor: navy, subColor: '#5c6d7c' },
+        { name: 'Web Application', scope: 'A dashboard or internal tool built around real data, roles and workflows.', iconHtml: icon('stack', navy),
+          includes: ['Authentication and user roles', 'REST API + database integration', 'CRUD screens and data tables', 'Staging + production deploy'],
+          timeline: '[ set typical timeline ]', price: '[ set standard price ]',
+          bg: 'rgba(255,255,255,0.05)', border: 'rgba(255,255,255,0.12)', iconBg: 'rgba(255,255,255,0.1)', iconColor: '#fff', textColor: '#fff', subColor: 'rgba(255,255,255,0.6)' },
+      ],
+      why: [
+        { title: 'Faster delivery', body: "A fixed process and reusable components mean less time spent re-solving what's already solved.", iconHtml: icon('bolt', '#fff'), iconBg: accentColor, iconColor: '#fff' },
+        { title: 'Consistent quality', body: 'The same checklist and standards apply to a landing page and a full application alike.', iconHtml: icon('check', navy), iconBg: '#f1ede6', iconColor: navy },
+        { title: 'Standard pricing', body: 'One published rate card. No client pays a different price for the same scope.', iconHtml: icon('spark', '#fff'), iconBg: accentColor, iconColor: '#fff' },
+        { title: 'Built for organizations', body: 'Role-based access, audit trails and handover documentation from day one, not bolted on later.', iconHtml: icon('shield', navy), iconBg: '#f1ede6', iconColor: navy },
+        { title: 'Clear communication', body: 'Plain-language updates and visible progress, no jargon standing in for a status report.', iconHtml: icon('chat', '#fff'), iconBg: accentColor, iconColor: '#fff' },
+        { title: 'You own the outcome', body: 'Code, credentials and documentation transfer to you at handover — no lock-in.', iconHtml: icon('check', navy), iconBg: '#f1ede6', iconColor: navy },
+      ],
+      process: [
+        { num: '01', title: 'Diagnose', body: 'Identify the operational problem and who it costs time or money.' },
+        { num: '02', title: 'Scope', body: 'Fix the deliverables, technology and standard price in writing.' },
+        { num: '03', title: 'Build', body: 'Develop and test against the agreed scope, on a fixed timeline.' },
+        { num: '04', title: 'Launch & support', body: 'Deploy, hand over documentation, and stay available for fixes.' },
+      ],
+      faqs: this.faqData.map((f, i) => ({
+        ...f,
+        open: this.state.openFaq === i,
+        symbol: this.state.openFaq === i ? '−' : '+',
+        toggle: () => this.setState(s => ({ openFaq: s.openFaq === i ? null : i })),
+      })),
+      socials: [
+        { label: 'GH', href: '#add-github-link' },
+        { label: 'WA', href: 'https://wa.me/919488479124' },
+        { label: '@', href: 'mailto:nexaa.support@gmail.com' },
+      ],
+      projectTypes: ['Business Website', 'Website Design & Development', 'Web Application', 'Full-Stack Application', 'API Integration', 'Website Redesign', 'Bug Fixing', 'Maintenance', 'Other'],
+      budgets: ['Under ₹5,000', '₹5,000 – ₹15,000', '₹15,000 – ₹30,000', '₹30,000 – ₹50,000', '₹50,000+'],
+      formStatus: this.state.formStatus,
+      handleSubmit: (e) => {
+        e.preventDefault()
+        this.setState({ formStatus: "Thanks — we'll reply within one business day." })
+      },
+    }
+  }
+}
+</script>
+</body>
+</html>

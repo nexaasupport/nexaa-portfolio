@@ -104,9 +104,9 @@ export const faqs = [
 ]
 
 export const socials = [
-  { label: 'GitHub', icon: 'react', href: '#add-github-link' },
-  { label: 'WhatsApp', icon: 'chat', href: 'https://wa.me/919488479124' },
-  { label: 'Email', icon: 'spark', href: 'mailto:nexaa.support@gmail.com' },
+  { label: 'GitHub', short: 'GH', href: '#add-github-link' },
+  { label: 'WhatsApp', short: 'WA', href: 'https://wa.me/919488479124' },
+  { label: 'Email', short: '@', href: 'mailto:nexaa.support@gmail.com' },
 ]
 
 export const projectTypes = ['Business Website', 'Website Design & Development', 'Web Application', 'Full-Stack Application', 'API Integration', 'Website Redesign', 'Bug Fixing', 'Maintenance', 'Other']

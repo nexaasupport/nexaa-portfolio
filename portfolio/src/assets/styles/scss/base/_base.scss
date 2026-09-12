@@ -3,12 +3,8 @@
 
 :root {
   --accent: #{$accent};
-  --accent-light: #{$accent-light};
-  --accent2: #{$accent2};
-  --accent-tint: #{oklch(0.48 0.16 280 / 0.08)};
-  --accent2-tint: #{oklch(0.72 0.16 25 / 0.14)};
-  --accent-shadow: #{oklch(0.48 0.16 280 / 0.7)};
-  --accent-border: #{oklch(0.48 0.16 280 / 0.3)};
+  --navy-shadow: rgba(11, 41, 66, 0.4);
+  --accent-shadow: rgba(239, 133, 46, 0.5);
 }
 
 * {
@@ -19,12 +15,12 @@ html {
   scroll-behavior: smooth;
 }
 
-
 body {
   margin: 0;
   background: $surface;
   font-family: $font-body;
-  color: $text;
+  color: $ink;
+  line-height: 1.5;
 }
 
 h1, h2, h3 {
@@ -38,8 +34,18 @@ em {
 }
 
 a {
-  color: inherit;
+  color: $navy;
   text-decoration: none;
+  transition: color 0.2s;
+
+  &:hover {
+    color: var(--accent);
+  }
+}
+
+::selection {
+  background: var(--accent);
+  color: $surface-white;
 }
 
 [data-reveal] {
@@ -61,39 +67,41 @@ a {
   align-items: center;
   justify-content: center;
   font-weight: 600;
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s, border-color 0.2s, box-shadow 0.2s;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s, box-shadow 0.2s, border-color 0.2s;
 
   &--pill {
     font-size: 13.5px;
     padding: 10px 16px;
-    border-radius: 999px;
+    border-radius: $radius-pill;
   }
 
-  &--gradient {
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
+  &--primary {
+    background: $navy;
     color: $surface-white;
+    box-shadow: 0 6px 16px -6px var(--navy-shadow);
+
+    &:hover {
+      background: var(--accent);
+      box-shadow: 0 8px 20px -6px var(--accent-shadow);
+    }
   }
 
   &--outline {
-    border: 1px solid oklch(0.24 0.015 260 / 0.18);
+    border: 1px solid rgba(11, 41, 66, 0.18);
     &:hover {
-      border-color: oklch(0.24 0.015 260 / 0.45);
+      border-color: rgba(11, 41, 66, 0.45);
     }
   }
 
-  &--dark {
-    background: $text;
-    color: $surface-white;
-    &:hover {
-      opacity: 0.9;
-    }
-  }
+  &--link {
+    padding: 0;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(11, 41, 66, 0.3);
+    border-radius: 0;
 
-  &--accent2 {
-    background: var(--accent2);
-    color: $surface-white;
     &:hover {
-      opacity: 0.9;
+      border-color: var(--accent);
+      color: var(--accent);
     }
   }
 }

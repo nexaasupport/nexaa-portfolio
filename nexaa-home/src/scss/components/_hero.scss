@@ -3,7 +3,25 @@
 
 .hero {
   padding: 88px 0 64px;
-  background: linear-gradient(180deg, $surface-alt 0%, $surface 100%);
+  background: $surface-alt;
+  position: relative;
+  overflow: hidden;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.16;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  &::before { top: -180px; left: -120px; background: $brand-500; }
+  &::after { bottom: -220px; right: -140px; background: $accent; }
 
   &__inner {
     @include container;
@@ -11,7 +29,13 @@
     grid-template-columns: 1.1fr 0.9fr;
     gap: 48px;
     align-items: center;
+    position: relative;
+    z-index: 1;
     @include respond(md) { grid-template-columns: 1fr; }
+  }
+
+  &__highlight {
+    color: $accent-dark;
   }
 
   &__eyebrow {
@@ -57,12 +81,24 @@
   &__art {
     @include card;
     aspect-ratio: 4 / 3;
-    background: linear-gradient(135deg, $brand-700, $brand-500 55%, $accent 130%);
-    display: flex;
-    align-items: flex-end;
-    padding: 24px;
-    color: $surface-white;
+    background: $brand-700;
+    position: relative;
+    overflow: hidden;
 
-    span { font-size: 0.85rem; opacity: 0.85; }
+    svg { display: block; width: 100%; height: 100%; }
   }
+}
+
+.hero-illustration__pulse {
+  transform-origin: center;
+  animation: hero-pulse 2.4s ease-out infinite;
+}
+
+@keyframes hero-pulse {
+  0% { transform: scale(0.6); opacity: 0.7; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-illustration__pulse { animation: none; }
 }
