@@ -4,16 +4,24 @@
 .testimonial-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  gap: 22px;
   @include respond(md) { grid-template-columns: 1fr; }
 }
 
 .testimonial-card {
   @include card;
   @include card-hover;
-  padding: 28px;
+  padding: 32px;
 
-  &__quote { font-size: 1rem; color: $ink-700; margin-bottom: 18px; }
+  &__quote {
+    font-family: $font-display;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.15rem;
+    line-height: 1.5;
+    color: $ink-900;
+    margin-bottom: 22px;
+  }
 
   &__author {
     display: flex;
@@ -27,11 +35,12 @@
   &__avatar {
     width: 44px; height: 44px;
     border-radius: 50%;
-    background: $brand-700;
+    background: $brand-900;
     box-shadow: 0 0 0 3px $surface-white, 0 0 0 4px $brand-200;
     color: $surface-white;
     display: flex; align-items: center; justify-content: center;
-    font-weight: 700;
+    font-family: $font-display;
+    font-weight: 600;
     font-size: 0.85rem;
   }
 }

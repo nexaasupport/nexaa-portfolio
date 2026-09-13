@@ -1,38 +1,40 @@
-// Palette: "Nexaa Home — Trade Blue"
-$brand-900: oklch(0.28 0.08 250);
-$brand-700: oklch(0.4 0.1 248);
-$brand-500: oklch(0.55 0.13 230);
-$brand-200: oklch(0.88 0.05 230);
+// Palette: "Nexaa Home — Ink & Brass"
+// A deep ink-emerald brand paired with a warm brass accent on a warm ivory
+// surface — reads as a premium, trustworthy home-services concierge brand.
+$brand-900: oklch(0.24 0.045 175);
+$brand-700: oklch(0.34 0.06 175);
+$brand-500: oklch(0.48 0.07 175);
+$brand-200: oklch(0.91 0.025 175);
 
-$accent: oklch(0.72 0.16 55); // warm amber CTA accent
-$accent-dark: oklch(0.6 0.16 50);
+$accent: oklch(0.76 0.13 80); // warm brass CTA accent
+$accent-dark: oklch(0.62 0.12 75);
 
-$surface: oklch(0.99 0.003 250);
+$surface: oklch(0.99 0.005 85); // warm ivory
 $surface-white: oklch(1 0 0);
-$surface-alt: oklch(0.965 0.006 250);
+$surface-alt: oklch(0.965 0.008 85);
 
-$ink-900: oklch(0.2 0.02 255);
-$ink-700: oklch(0.32 0.02 255);
-$ink-500: oklch(0.48 0.015 255);
-$ink-300: oklch(0.68 0.01 255);
-$border: oklch(0.9 0.006 255);
+$ink-900: oklch(0.19 0.015 260);
+$ink-700: oklch(0.32 0.014 260);
+$ink-500: oklch(0.48 0.012 260);
+$ink-300: oklch(0.68 0.008 260);
+$border: oklch(0.9 0.008 85);
 
 $success: oklch(0.68 0.15 155);
 $warning: oklch(0.78 0.15 80);
-$danger: oklch(0.62 0.19 25);
+$danger: oklch(0.6 0.18 25);
 $info: $brand-500;
 
 $max-width: 1200px;
-$radius-sm: 10px;
-$radius-md: 20px;
-$radius-lg: 28px;
+$radius-sm: 12px;
+$radius-md: 22px;
+$radius-lg: 30px;
 $radius-pill: 999px;
 
-$font-display: 'Poppins', 'Segoe UI', sans-serif;
+$font-display: 'Fraunces', 'Georgia', serif;
 $font-body: 'Inter', 'Segoe UI', sans-serif;
 
-$shadow-sm: 0 1px 3px oklch(0.2 0.02 255 / 0.08);
-$shadow-md: 0 8px 24px oklch(0.2 0.02 255 / 0.1);
-$shadow-lg: 0 20px 48px oklch(0.2 0.02 255 / 0.14);
+$shadow-sm: 0 1px 3px oklch(0.19 0.015 260 / 0.07);
+$shadow-md: 0 12px 32px oklch(0.19 0.015 260 / 0.1);
+$shadow-lg: 0 28px 64px oklch(0.19 0.015 260 / 0.16);
 
-$transition: 180ms ease;
+$transition: 200ms cubic-bezier(.22, 1, .36, 1);

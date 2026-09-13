@@ -36,34 +36,36 @@ button, input, select, textarea { font-family: inherit; }
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 12px 22px;
+  padding: 13px 24px;
   border-radius: $radius-pill;
   font-weight: 600;
   font-size: 0.95rem;
+  letter-spacing: 0.005em;
   transition: transform $transition, box-shadow $transition, background $transition, color $transition;
   white-space: nowrap;
 
   &--primary {
-    background: $brand-700;
+    background: $brand-900;
     color: $surface-white;
     box-shadow: $shadow-sm;
-    &:hover { background: $brand-900; transform: translateY(-1px); }
+    &:hover { background: $brand-700; transform: translateY(-2px); box-shadow: $shadow-md; }
   }
 
   &--accent {
     background: $accent;
     color: $ink-900;
-    &:hover { background: $accent-dark; transform: translateY(-1px); }
+    box-shadow: 0 10px 24px oklch(0.76 0.13 80 / 0.35);
+    &:hover { background: $accent-dark; transform: translateY(-2px); }
   }
 
   &--ghost {
     background: transparent;
-    color: $brand-700;
+    color: $brand-900;
     border: 1px solid $border;
     &:hover { border-color: $brand-500; background: $surface-alt; }
   }
 
-  &--sm { padding: 8px 16px; font-size: 0.85rem; border-radius: $radius-sm; }
+  &--sm { padding: 9px 17px; font-size: 0.85rem; border-radius: $radius-sm; }
   &--danger { background: $danger; color: $surface-white; }
   &:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 }

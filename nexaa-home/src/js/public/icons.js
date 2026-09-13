@@ -45,8 +45,12 @@ const TONE_FILL = {
   inverse: 'rgba(255, 255, 255, 0.35)',
 }
 
-export function icon(name, size = 20, { tone = 'brand' } = {}) {
+export function iconPaths(name, fill = 'none') {
   const build = ICONS[name] || ICONS.check
+  return build(fill)
+}
+
+export function icon(name, size = 20, { tone = 'brand' } = {}) {
   const fill = TONE_FILL[tone] || TONE_FILL.brand
-  return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">${build(fill)}</svg>`
+  return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">${iconPaths(name, fill)}</svg>`
 }
