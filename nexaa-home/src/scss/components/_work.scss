@@ -1,0 +1,66 @@
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  @include respond(md) { grid-template-columns: repeat(2, 1fr); }
+  @include respond(sm) { grid-template-columns: 1fr; }
+}
+
+.work-card {
+  @include card;
+  @include card-hover;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 18px;
+  color: $surface-white;
+  background: var(--tone);
+
+  &--wide {
+    grid-column: span 2;
+    aspect-ratio: 16 / 9;
+    @include respond(sm) { grid-column: span 1; aspect-ratio: 4 / 3; }
+  }
+
+  &__icon {
+    align-self: flex-start;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: oklch(1 0 0 / 0.18);
+    border: 1px solid oklch(1 0 0 / 0.3);
+    backdrop-filter: blur(4px);
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__label {
+    font-size: 0.94rem;
+    font-weight: 700;
+  }
+
+  &__descriptor {
+    font-size: 0.78rem;
+    color: oklch(1 0 0 / 0.8);
+  }
+
+  &--1 { --tone: #{$brand-700}; }
+  &--2 { --tone: #{$brand-500}; }
+  &--3 { --tone: #{$accent-dark}; }
+  &--4 { --tone: #{$brand-900}; }
+  &--5 { --tone: #{$brand-700}; }
+}

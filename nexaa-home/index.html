@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexaa Home — Trusted pros for every home job</title>
+  <meta name="description" content="Book a vetted, background-checked technician for plumbing, electrical, cleaning, HVAC and more — matched in minutes." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a href="#top" class="site-header__logo">
+        <img src="/logo-icon.svg" alt="" width="28" height="28" />
+        Nexaa Home
+      </a>
+      <nav class="site-header__nav" data-nav></nav>
+      <div class="site-header__actions">
+        <a href="admin/" class="site-header__link">Admin</a>
+        <a href="#book" class="btn btn--primary btn--sm">Book a Service</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero__inner">
+        <div>
+          <span class="hero__eyebrow">450+ vetted pros nearby</span>
+          <h1>Trusted pros for <span class="hero__highlight">every home job</span>.</h1>
+          <p class="hero__lede">Plumbing, electrical, cleaning and more — request a service and get matched with a background-checked technician in minutes.</p>
+          <div class="hero__ctas">
+            <a href="#book" class="btn btn--primary">Book a Service</a>
+            <a href="#services" class="btn btn--ghost">See All Services</a>
+          </div>
+          <div class="hero__stats" data-hero-stats></div>
+        </div>
+        <div class="hero__art" data-hero-art></div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="section__inner">
+        <div class="section__head">
+          <span class="eyebrow">Services</span>
+          <h2>Whatever the job, we've got a pro for it.</h2>
+          <p>Every technician is background-checked, rated by real customers, and backed by our satisfaction guarantee.</p>
+        </div>
+        <div class="services-grid" data-services></div>
+      </div>
+    </section>
+
+    <section class="section" id="how-it-works" style="background:var(--surface-alt, #f4f6f8)">
+      <div class="section__inner">
+        <div class="section__head">
+          <span class="eyebrow">How it works</span>
+          <h2>Booked in minutes, not phone calls.</h2>
+        </div>
+        <div class="steps-grid" data-steps></div>
+      </div>
+    </section>
+
+    <section class="section" id="work">
+      <div class="section__inner">
+        <div class="section__head">
+          <span class="eyebrow">Recent work</span>
+          <h2>Jobs completed by our network this month.</h2>
+        </div>
+        <div class="work-grid" data-work></div>
+      </div>
+    </section>
+
+    <section class="section" id="pricing">
+      <div class="section__inner">
+        <div class="section__head">
+          <span class="eyebrow">Membership</span>
+          <h2>Pick a plan, book without limits.</h2>
+        </div>
+        <div class="pricing-grid" data-pricing></div>
+      </div>
+    </section>
+
+    <section class="section" id="testimonials">
+      <div class="section__inner">
+        <div class="section__head">
+          <span class="eyebrow">Testimonials</span>
+          <h2>What homeowners are saying.</h2>
+        </div>
+        <div class="testimonial-grid" data-testimonials></div>
+      </div>
+    </section>
+
+    <section class="booking" id="book">
+      <div class="section__inner">
+        <div class="section__head">
+          <span class="eyebrow">Get a quote</span>
+          <h2>Book a service now.</h2>
+          <p>Tell us what's going on — we'll match you with the right pro and confirm a time.</p>
+        </div>
+        <div class="booking__grid">
+          <div class="booking__points">
+            <div class="booking__point"><span class="booking__point-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Matched with a vetted pro in under 30 minutes</div>
+            <div class="booking__point"><span class="booking__point-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Upfront pricing, no surprise call-out fees</div>
+            <div class="booking__point"><span class="booking__point-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Pay only after the job is done</div>
+          </div>
+          <div class="booking-form">
+            <div data-booking-fields>
+              <form data-booking-form novalidate>
+                <div class="booking-form__grid">
+                  <div class="field">
+                    <label for="bf-name">Full name</label>
+                    <input id="bf-name" name="name" type="text" placeholder="Jane Doe" />
+                  </div>
+                  <div class="field">
+                    <label for="bf-phone">Phone number</label>
+                    <input id="bf-phone" name="phone" type="tel" placeholder="+91 98765 43210" />
+                  </div>
+                </div>
+                <div class="booking-form__grid">
+                  <div class="field">
+                    <label for="bf-email">Email</label>
+                    <input id="bf-email" name="email" type="email" placeholder="jane@example.com" />
+                  </div>
+                  <div class="field">
+                    <label for="bf-service">Service needed</label>
+                    <select id="bf-service" name="service" data-service-options></select>
+                  </div>
+                </div>
+                <div class="field" style="margin-bottom:16px">
+                  <label for="bf-address">Address</label>
+                  <input id="bf-address" name="address" type="text" placeholder="Street, city" />
+                </div>
+                <div class="field" style="margin-bottom:20px">
+                  <label for="bf-notes">Tell us more (optional)</label>
+                  <textarea id="bf-notes" name="notes" placeholder="What needs to be done?"></textarea>
+                </div>
+                <button type="submit" class="btn btn--accent" style="width:100%">Get My Free Quote</button>
+              </form>
+            </div>
+            <div data-booking-success hidden class="booking-form__success">
+              <div class="booking-form__success-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+              <h3>Request received!</h3>
+              <p>A Nexaa Home coordinator will confirm your appointment shortly.</p>
+              <button type="button" class="btn btn--ghost" data-book-again>Book another service</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="site-footer__brand">
+        <img src="/logo-mark.svg" alt="" width="26" height="26" />
+        <span class="site-footer__wordmark">Nexaa Home</span>
+        <span class="site-footer__copyright">© 2026 Nexaa Home. All rights reserved.</span>
+      </div>
+      <div class="site-footer__links">
+        <a href="admin/">Admin dashboard</a>
+        <a href="#top">Back to top</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/js/main.js"></script>
+</body>
+</html>

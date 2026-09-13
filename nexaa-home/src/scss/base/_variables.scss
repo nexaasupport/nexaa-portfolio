@@ -1,0 +1,38 @@
+// Palette: "Nexaa Home — Trade Blue"
+$brand-900: oklch(0.28 0.08 250);
+$brand-700: oklch(0.4 0.1 248);
+$brand-500: oklch(0.55 0.13 230);
+$brand-200: oklch(0.88 0.05 230);
+
+$accent: oklch(0.72 0.16 55); // warm amber CTA accent
+$accent-dark: oklch(0.6 0.16 50);
+
+$surface: oklch(0.99 0.003 250);
+$surface-white: oklch(1 0 0);
+$surface-alt: oklch(0.965 0.006 250);
+
+$ink-900: oklch(0.2 0.02 255);
+$ink-700: oklch(0.32 0.02 255);
+$ink-500: oklch(0.48 0.015 255);
+$ink-300: oklch(0.68 0.01 255);
+$border: oklch(0.9 0.006 255);
+
+$success: oklch(0.68 0.15 155);
+$warning: oklch(0.78 0.15 80);
+$danger: oklch(0.62 0.19 25);
+$info: $brand-500;
+
+$max-width: 1200px;
+$radius-sm: 10px;
+$radius-md: 20px;
+$radius-lg: 28px;
+$radius-pill: 999px;
+
+$font-display: 'Poppins', 'Segoe UI', sans-serif;
+$font-body: 'Inter', 'Segoe UI', sans-serif;
+
+$shadow-sm: 0 1px 3px oklch(0.2 0.02 255 / 0.08);
+$shadow-md: 0 8px 24px oklch(0.2 0.02 255 / 0.1);
+$shadow-lg: 0 20px 48px oklch(0.2 0.02 255 / 0.14);
+
+$transition: 180ms ease;
