@@ -33,48 +33,46 @@ export const services = [
 
 export const projects = [
   {
-    name: 'Local Service Booking Platform', label: 'Demo Project', tech: 'Vanilla JS · Vite · SCSS',
-    shot: 'screenshot: booking flow',
+    name: 'Local Service Booking Platform', label: 'Case Study', tech: 'Vanilla JS · Vite · SCSS',
+    shot: 'Booking flow',
     brief: 'Small service businesses lose bookings to phone tag and no-shows with no reminder system.',
     outcome: 'Live services catalog and a real booking form that creates a customer + job record — built to replace a paper diary or shared spreadsheet.',
     features: ['Live services catalog', 'Working booking form', 'Client-side validation', 'Feeds the ops dashboard', 'Mobile-first'],
     band: 'a',
-    demo: '/nexaa-home/',
   },
   {
-    name: 'Operations Dashboard', label: 'Demo Project', tech: 'Vanilla JS · Vite · SCSS',
-    shot: 'screenshot: KPI dashboard',
+    name: 'Operations Dashboard', label: 'Case Study', tech: 'Vanilla JS · Vite · SCSS',
+    shot: 'KPI dashboard',
     brief: "Owners can't see daily revenue, bookings or no-shows without opening three different spreadsheets.",
     outcome: "One screen with today's numbers, a live jobs table, technician assignment and payments — the daily check-in a manager actually opens.",
     features: ['Live KPIs', 'Jobs/customers/technicians/payments', 'Assign & status workflow', 'Filterable tables', 'Hash-routed views'],
     band: 'b',
-    demo: '/nexaa-home/admin/',
   },
   {
-    name: 'Business Management System', label: 'Personal Project', tech: 'React.js · Node.js · Express.js',
-    shot: 'screenshot: user management',
+    name: 'Business Management System', label: 'Case Study', tech: 'React.js · Node.js · Express.js',
+    shot: 'User management',
     brief: 'Growing teams outgrow shared logins and manual record-keeping with no audit trail.',
     outcome: 'Authentication, roles, full CRUD on records and an activity log — the backbone an organization runs staff and clients through.',
     features: ['Authentication', 'Role-based access', 'CRUD operations', 'Activity log', 'REST API'],
     band: 'c',
   },
-].map((p) => ({ repo: '#add-github-repo-link', demo: '#add-live-demo-link', ...p }))
+]
 
 export const packages = [
   {
     name: 'Landing Page', scope: 'A focused one-page site built to convert a single offer, launch or campaign.', icon: 'bolt', iconTone: 'accent',
     includes: ['Responsive one-page build', 'Contact form', 'Basic SEO metadata', 'Deploy + handover'],
-    timeline: '[ set typical timeline ]', price: '[ set standard price ]', featured: false,
+    timeline: '3–5 business days', price: '₹7,999', featured: false,
   },
   {
     name: 'Business Website', scope: 'A multi-section site that gives an established organization a credible, professional presence.', icon: 'globe', iconTone: 'accent2-solid',
     includes: ['Up to 5 sections or pages', 'Modern, fast front-end build', 'SEO + Open Graph setup', 'One revision round', 'Deploy + handover'],
-    timeline: '[ set typical timeline ]', price: '[ set standard price ]', featured: true,
+    timeline: '1–2 weeks', price: '₹24,999', featured: true,
   },
   {
     name: 'Web Application', scope: 'A dashboard or internal tool built around real data, roles and workflows.', icon: 'stack', iconTone: 'accent',
     includes: ['Authentication and user roles', 'REST API + database integration', 'CRUD screens and data tables', 'Staging + production deploy'],
-    timeline: '[ set typical timeline ]', price: '[ set standard price ]', featured: false,
+    timeline: '3–5 weeks', price: 'From ₹59,999', featured: false,
   },
 ]
 
@@ -100,11 +98,10 @@ export const faqs = [
   { q: 'How fast is delivery?', a: 'Faster than a from-scratch build, because a fixed process and reusable components remove most of the setup time. Exact timelines are listed per package.' },
   { q: 'Do we own the code?', a: 'Yes — the repository, deployment access and documentation transfer to you at handover.' },
   { q: 'Can you fix or extend an existing system?', a: 'Yes. Redesigns, bug fixes and maintenance on existing websites and applications run on the same standard rate card.' },
-  { q: 'How are payments handled?', a: '[ add your payment terms — e.g. deposit up front, balance on delivery ]' },
+  { q: 'How are payments handled?', a: 'A 50% deposit secures your project slot and starts the work; the remaining balance is due on delivery, before final handover.' },
 ]
 
 export const socials = [
-  { label: 'GitHub', short: 'GH', href: '#add-github-link' },
   { label: 'WhatsApp', short: 'WA', href: 'https://wa.me/919488479124' },
   { label: 'Email', short: '@', href: 'mailto:nexaa.support@gmail.com' },
 ]

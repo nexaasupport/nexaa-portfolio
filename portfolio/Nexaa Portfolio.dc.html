@@ -123,7 +123,7 @@
   <section id="work" style="max-width:1200px; margin:0 auto; padding:96px 24px;">
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:44px; flex-wrap:wrap; gap:16px;">
       <h2 style="font-family:'Space Grotesk',sans-serif; font-size:34px; font-weight:700; color:#0b2942; margin:0; letter-spacing:-0.01em;">Selected work</h2>
-      <span style="font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:#5c6d7c; background:#f1ede6; padding:6px 14px; border-radius:100px;">Self-initiated builds</span>
+      <span style="font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:#5c6d7c; background:#f1ede6; padding:6px 14px; border-radius:100px;">Case studies</span>
     </div>
     <div style="display:flex; flex-direction:column; gap:24px;">
       <sc-for list="{{ projects }}" as="item" hint-placeholder-count="3">
@@ -140,12 +140,11 @@
                 <span style="font-size:12.5px; color:#0b2942; background:#f1ede6; padding:5px 12px; border-radius:100px;">{{ feat }}</span>
               </sc-for>
             </div>
-            <div style="display:flex; gap:16px;">
-              <a href="{{ item.repo }}" style="font-size:13.5px; font-weight:600; color:#0b2942; border-bottom:1px solid rgba(11,41,66,0.3);">Repository</a>
-              <sc-if value="{{ item.demo }}" hint-placeholder-val="{{ true }}">
+            <sc-if value="{{ item.demo }}" hint-placeholder-val="{{ true }}">
+              <div style="display:flex; gap:16px;">
                 <a href="{{ item.demo }}" style="font-size:13.5px; font-weight:600; color:#0b2942; border-bottom:1px solid rgba(11,41,66,0.3);">Live demo</a>
-              </sc-if>
-            </div>
+              </div>
+            </sc-if>
           </div>
         </div>
       </sc-for>
@@ -378,7 +377,7 @@ class Component extends DCLogic {
     { q: 'How fast is delivery?', a: 'Faster than a from-scratch build, because a fixed process and reusable components remove most of the setup time. Exact timelines are listed per package.' },
     { q: 'Do we own the code?', a: 'Yes — the repository, deployment access and documentation transfer to you at handover.' },
     { q: 'Can you fix or extend an existing system?', a: 'Yes. Redesigns, bug fixes and maintenance on existing websites and applications run on the same standard rate card.' },
-    { q: 'How are payments handled?', a: '[ add your payment terms — e.g. deposit up front, balance on delivery ]' },
+    { q: 'How are payments handled?', a: 'A 50% deposit secures your project slot and starts the work; the remaining balance is due on delivery, before final handover.' },
   ]
 
   renderVals() {
@@ -412,34 +411,31 @@ class Component extends DCLogic {
         { num: '07', title: 'Ongoing Support & Maintenance', body: 'Continuous fixes, updates and improvements for existing websites and applications.', iconHtml: icon('bug', '#fff'), iconBg: accentColor, iconColor: '#fff' },
       ],
       projects: [
-        { name: 'Local Service Booking Platform', label: 'Demo Project', tech: 'Vanilla JS · Vite · SCSS', shot: 'screenshot: booking flow',
+        { name: 'Local Service Booking Platform', label: 'Case Study', tech: 'Vanilla JS · Vite · SCSS', shot: 'Booking flow',
           brief: 'Small service businesses lose bookings to phone tag and no-shows with no reminder system.',
           outcome: 'Live services catalog and a real booking form that creates a customer + job record — built to replace a paper diary or shared spreadsheet.',
-          features: ['Live services catalog', 'Working booking form', 'Client-side validation', 'Feeds the ops dashboard', 'Mobile-first'],
-          repo: '#add-github-repo-link', demo: '/nexaa-home/' },
-        { name: 'Operations Dashboard', label: 'Demo Project', tech: 'Vanilla JS · Vite · SCSS', shot: 'screenshot: KPI dashboard',
+          features: ['Live services catalog', 'Working booking form', 'Client-side validation', 'Feeds the ops dashboard', 'Mobile-first'] },
+        { name: 'Operations Dashboard', label: 'Case Study', tech: 'Vanilla JS · Vite · SCSS', shot: 'KPI dashboard',
           brief: "Owners can't see daily revenue, bookings or no-shows without opening three different spreadsheets.",
           outcome: "One screen with today's numbers, a live jobs table, technician assignment and payments — the daily check-in a manager actually opens.",
-          features: ['Live KPIs', 'Jobs/customers/technicians/payments', 'Assign & status workflow', 'Filterable tables', 'Hash-routed views'],
-          repo: '#add-github-repo-link', demo: '/nexaa-home/admin/' },
-        { name: 'Business Management System', label: 'Personal Project', tech: 'React.js · Node.js · Express.js', shot: 'screenshot: user management',
+          features: ['Live KPIs', 'Jobs/customers/technicians/payments', 'Assign & status workflow', 'Filterable tables', 'Hash-routed views'] },
+        { name: 'Business Management System', label: 'Case Study', tech: 'React.js · Node.js · Express.js', shot: 'User management',
           brief: 'Growing teams outgrow shared logins and manual record-keeping with no audit trail.',
           outcome: 'Authentication, roles, full CRUD on records and an activity log — the backbone an organization runs staff and clients through.',
-          features: ['Authentication', 'Role-based access', 'CRUD operations', 'Activity log', 'REST API'],
-          repo: '#add-github-repo-link', demo: '#add-live-demo-link' },
+          features: ['Authentication', 'Role-based access', 'CRUD operations', 'Activity log', 'REST API'] },
       ],
       packages: [
         { name: 'Landing Page', scope: 'A focused one-page site built to convert a single offer, launch or campaign.', iconHtml: icon('bolt', navy),
           includes: ['Responsive one-page build', 'Contact form', 'Basic SEO metadata', 'Deploy + handover'],
-          timeline: '[ set typical timeline ]', price: '[ set standard price ]',
+          timeline: '3–5 business days', price: '₹7,999',
           bg: 'rgba(255,255,255,0.05)', border: 'rgba(255,255,255,0.12)', iconBg: 'rgba(255,255,255,0.1)', iconColor: '#fff', textColor: '#fff', subColor: 'rgba(255,255,255,0.6)' },
         { name: 'Business Website', scope: 'A multi-section site that gives an established organization a credible, professional presence.', iconHtml: icon('globe', navy),
           includes: ['Up to 5 sections or pages', 'Modern, fast front-end build', 'SEO + Open Graph setup', 'One revision round', 'Deploy + handover'],
-          timeline: '[ set typical timeline ]', price: '[ set standard price ]',
+          timeline: '1–2 weeks', price: '₹24,999',
           bg: '#fff', border: '#fff', iconBg: accentColor, iconColor: '#fff', textColor: navy, subColor: '#5c6d7c' },
         { name: 'Web Application', scope: 'A dashboard or internal tool built around real data, roles and workflows.', iconHtml: icon('stack', navy),
           includes: ['Authentication and user roles', 'REST API + database integration', 'CRUD screens and data tables', 'Staging + production deploy'],
-          timeline: '[ set typical timeline ]', price: '[ set standard price ]',
+          timeline: '3–5 weeks', price: 'From ₹59,999',
           bg: 'rgba(255,255,255,0.05)', border: 'rgba(255,255,255,0.12)', iconBg: 'rgba(255,255,255,0.1)', iconColor: '#fff', textColor: '#fff', subColor: 'rgba(255,255,255,0.6)' },
       ],
       why: [
@@ -463,7 +459,6 @@ class Component extends DCLogic {
         toggle: () => this.setState(s => ({ openFaq: s.openFaq === i ? null : i })),
       })),
       socials: [
-        { label: 'GH', href: '#add-github-link' },
         { label: 'WA', href: 'https://wa.me/919488479124' },
         { label: '@', href: 'mailto:nexaa.support@gmail.com' },
       ],

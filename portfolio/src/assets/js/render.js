@@ -65,10 +65,7 @@ function renderProjects(container) {
         <ul class="project-card__features">
           ${p.features.map((f) => `<li>${f}</li>`).join('')}
         </ul>
-        <div class="project-card__actions">
-          <a href="${p.repo}" class="btn--link">Repository</a>
-          ${p.demo ? `<a href="${p.demo}" class="btn--link">Live demo</a>` : ''}
-        </div>
+        ${p.demo ? `<div class="project-card__actions"><a href="${p.demo}" class="btn--link">Live demo</a></div>` : ''}
       </div>
     </article>
   `).join('')
