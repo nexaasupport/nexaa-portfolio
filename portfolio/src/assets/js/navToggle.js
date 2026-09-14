@@ -1,23 +1,36 @@
 export function initNavToggle() {
   const header = document.querySelector('.site-header')
   const toggle = header?.querySelector('.site-header__toggle')
-  const nav = header?.querySelector('.site-header__nav')
-  if (!header || !toggle || !nav) return
+  const panel = document.querySelector('[data-mobile-panel]')
+  const closeBtn = panel?.querySelector('[data-nav-close]')
+  if (!header || !toggle || !panel) return
 
   const close = () => {
     header.classList.remove('is-nav-open')
-    nav.classList.remove('is-open')
+    panel.classList.remove('is-open')
     toggle.setAttribute('aria-expanded', 'false')
+    document.body.classList.remove('nav-locked')
+  }
+
+  const open = () => {
+    header.classList.add('is-nav-open')
+    panel.classList.add('is-open')
+    toggle.setAttribute('aria-expanded', 'true')
+    document.body.classList.add('nav-locked')
   }
 
   toggle.addEventListener('click', () => {
-    const isOpen = nav.classList.toggle('is-open')
-    header.classList.toggle('is-nav-open', isOpen)
-    toggle.setAttribute('aria-expanded', String(isOpen))
+    panel.classList.contains('is-open') ? close() : open()
   })
 
-  nav.addEventListener('click', (event) => {
+  closeBtn?.addEventListener('click', close)
+
+  panel.addEventListener('click', (event) => {
     if (event.target.closest('a')) close()
+  })
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') close()
   })
 
   window.addEventListener('resize', () => {
