@@ -4,65 +4,45 @@
 .hero {
   max-width: $max-width;
   margin: 0 auto;
-  padding: 100px 40px 90px;
+  padding: 80px 24px 96px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: 1.2fr 0.8fr;
   gap: 56px;
   align-items: center;
-  position: relative;
-  overflow: hidden;
 
-  &__mark {
-    position: absolute;
-    top: -0.5em;
-    left: -0.08em;
-    @include display;
-    font-size: min(38vw, 480px);
-    font-weight: 700;
-    line-height: 1;
-    color: var(--accent);
-    opacity: 0.04;
-    z-index: 0;
-    pointer-events: none;
-    user-select: none;
-  }
-
-  &__content {
-    position: relative;
-    z-index: 1;
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
   }
 
   &__eyebrow {
     display: inline-flex;
     align-items: center;
-    gap: 9px;
+    gap: 8px;
     @include mono;
-    font-size: 12px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: oklch(0.35 0.012 260);
-    background: var(--accent-tint);
-    border: 1px solid var(--accent-border);
-    border-radius: 999px;
-    padding: 7px 14px;
+    font-size: 12.5px;
+    color: $navy;
+    background: $surface-white;
+    border: 1px solid rgba(11, 41, 66, 0.14);
+    border-radius: $radius-pill;
+    padding: 7px 14px 7px 10px;
+    margin-bottom: 28px;
 
     &-dot {
-      width: 6px;
-      height: 6px;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
       background: var(--accent);
-      animation: nx-pulse 2s ease-in-out infinite;
+      display: inline-block;
     }
   }
 
   &__title {
-    font-size: clamp(38px, 4.6vw, 58px);
-    line-height: 1.08;
-    letter-spacing: -0.035em;
+    font-size: clamp(34px, 4.8vw, 56px);
+    line-height: 1.06;
+    letter-spacing: -0.02em;
     font-weight: 700;
-    margin: 26px 0 0;
-    text-wrap: pretty;
-    animation: nx-up 0.7s 0.08s ease both;
+    color: $navy;
+    margin: 0 0 24px;
 
     em {
       font-style: normal;
@@ -71,135 +51,86 @@
   }
 
   &__title-dash {
-    color: var(--accent2);
+    color: var(--accent);
   }
 
   &__lead {
     font-size: 18px;
-    line-height: 1.65;
-    color: oklch(0.45 0.012 260);
-    max-width: 540px;
-    margin: 22px 0 0;
-    text-wrap: pretty;
-    animation: nx-up 0.7s 0.16s ease both;
+    color: $text2;
+    max-width: 560px;
+    margin: 0 0 16px;
   }
 
   &__sub {
     font-size: 15.5px;
-    line-height: 1.6;
-    color: oklch(0.52 0.012 260);
-    max-width: 540px;
-    margin: 16px 0 0;
-    animation: nx-up 0.7s 0.2s ease both;
+    color: $text3;
+    max-width: 560px;
+    margin: 0 0 36px;
   }
 
   &__actions {
     display: flex;
+    align-items: center;
+    gap: 14px;
     flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 34px;
-    animation: nx-up 0.7s 0.24s ease both;
 
-    .btn--gradient {
+    .btn--primary {
       font-size: 15px;
-      padding: 14px 26px;
-      border-radius: 9px;
-      box-shadow: 0 16px 32px -16px var(--accent-shadow);
+      padding: 14px 28px;
 
       &:hover {
         transform: translateY(-2px);
-        box-shadow: 0 20px 36px -14px var(--accent-shadow);
       }
     }
 
-    .btn--ghost {
+    .btn--link {
       font-size: 15px;
-      font-weight: 600;
-      padding: 14px 24px;
-      border-radius: 9px;
-      border: 1px solid oklch(0.24 0.015 260 / 0.16);
-      background: $surface-white;
-      transition: border-color 0.2s, background 0.2s;
-
-      &:hover {
-        border-color: oklch(0.24 0.015 260 / 0.32);
-        background: oklch(0.985 0.003 255);
-      }
     }
   }
 
   &__panel {
-    position: relative;
-    z-index: 1;
-    min-height: 320px;
-  }
-
-  &__stack {
-    position: relative;
-    height: 300px;
+    background: $navy;
+    border-radius: $radius-lg;
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    box-shadow: $shadow-lg, 0 0 0 1px rgba(11, 41, 66, 0.06);
   }
 }
 
 .hero-stat {
-  position: absolute;
-  width: 220px;
-  padding: 22px;
-  border-radius: $radius-md;
-  background: $surface-white;
-  border: 1px solid oklch(0.24 0.015 260 / 0.1);
-  box-shadow: 0 20px 40px -24px oklch(0.24 0.015 260 / 0.35);
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  padding-bottom: 18px;
 
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 24px 44px -20px oklch(0.24 0.015 260 / 0.4);
-    z-index: 5;
-  }
-
-  &--0 {
-    top: 0;
-    left: 8%;
-    background: var(--accent);
-    border-color: var(--accent);
-    color: $surface-white;
-    z-index: 3;
-  }
-
-  &--1 {
-    top: 76px;
-    left: 32%;
-    z-index: 2;
-  }
-
-  &--2 {
-    top: 160px;
-    left: 4%;
-    background: $surface-white;
-    z-index: 1;
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
   }
 
   &__label {
     @include mono;
-    font-size: 10.5px;
-    letter-spacing: 0.12em;
+    font-size: 11.5px;
+    color: rgba(255, 255, 255, 0.55);
     text-transform: uppercase;
-    opacity: 0.65;
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
   }
 
   &__value {
     @include display;
-    font-size: 19px;
-    font-weight: 700;
-    margin-top: 8px;
+    font-size: 22px;
+    font-weight: 600;
+    color: $surface-white;
   }
 }
 
 .marquee {
-  border-top: 1px solid oklch(0.24 0.015 260 / 0.08);
-  border-bottom: 1px solid oklch(0.24 0.015 260 / 0.08);
+  border-top: 1px solid rgba(11, 41, 66, 0.08);
+  border-bottom: 1px solid rgba(11, 41, 66, 0.08);
   background: $surface-white;
   overflow: hidden;
-  padding: 18px 0;
+  padding: 20px 0;
 
   &__track {
     display: flex;
@@ -208,10 +139,9 @@
     gap: 14px;
     animation: nx-marquee 34s linear infinite;
     @include mono;
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    color: oklch(0.45 0.012 260);
+    font-size: 15px;
+    font-weight: 600;
+    color: $text4;
     white-space: nowrap;
 
     span {
@@ -220,7 +150,7 @@
   }
 
   &__dot {
-    color: var(--accent-border);
+    color: rgba(11, 41, 66, 0.2);
     font-size: 12px;
   }
 

@@ -1,12 +1,12 @@
-import { qs } from '../lib/dom.js'
+import { qs, qsa } from '../lib/dom.js'
 import { getServices } from '../lib/store.js'
-import { icon } from './icons.js'
+import { icon, iconPaths } from './icons.js'
 import { nav, heroStats, steps, workGallery, plans, testimonials } from './content.js'
 
 export function renderNav() {
-  const el = qs('[data-nav]')
-  if (!el) return
-  el.innerHTML = nav.map((item) => `<a href="${item.href}">${item.label}</a>`).join('')
+  qsa('[data-nav]').forEach((el) => {
+    el.innerHTML = nav.map((item) => `<a href="${item.href}" class="site-header__link">${item.label}</a>`).join('')
+  })
 }
 
 export function renderHeroStats() {
@@ -15,6 +15,32 @@ export function renderHeroStats() {
   el.innerHTML = heroStats
     .map((s) => `<div class="hero__stat"><strong>${s.value}</strong><span>${s.label}</span></div>`)
     .join('')
+}
+
+export function renderHeroArt() {
+  const el = qs('[data-hero-art]')
+  if (!el) return
+  const items = getServices().slice(0, 6)
+  el.innerHTML = `
+    <div class="hero-services">
+      <div class="hero-services__head">
+        <span>Popular services</span>
+        <a href="#services">See all →</a>
+      </div>
+      <div class="hero-services__grid">
+        ${items
+          .map(
+            (s) => `
+          <a href="#book" class="hero-services__item">
+            <span class="hero-services__icon">${icon(s.icon, 19)}</span>
+            <span class="hero-services__name">${s.name}</span>
+            <span class="hero-services__price">From ₹${s.basePrice}</span>
+          </a>`
+          )
+          .join('')}
+      </div>
+    </div>
+  `
 }
 
 export function renderServices() {
@@ -56,7 +82,17 @@ export function renderWork() {
   const el = qs('[data-work]')
   if (!el) return
   el.innerHTML = workGallery
-    .map((w) => `<div class="work-card work-card--${w.tone}"><span>${w.label}</span></div>`)
+    .map(
+      (w) => `
+      <div class="work-card work-card--${w.tone}${w.wide ? ' work-card--wide' : ''}">
+        <svg class="work-card__watermark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${iconPaths(w.icon, 'none')}</svg>
+        <div class="work-card__icon">${icon(w.icon, 28, { tone: 'inverse' })}</div>
+        <div class="work-card__text">
+          <span class="work-card__label">${w.label}</span>
+          <span class="work-card__descriptor">${w.descriptor}</span>
+        </div>
+      </div>`
+    )
     .join('')
 }
 
@@ -98,6 +134,7 @@ export function renderTestimonials() {
 export function renderAll() {
   renderNav()
   renderHeroStats()
+  renderHeroArt()
   renderServices()
   renderSteps()
   renderWork()

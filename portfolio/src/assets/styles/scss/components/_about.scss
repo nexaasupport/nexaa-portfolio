@@ -2,67 +2,63 @@
 @use '../base/mixins' as *;
 
 .about-section {
-  border-top: 1px solid oklch(0.24 0.015 260 / 0.08);
-  background: $surface-white;
+  @include section;
 
   &__inner {
     @include container;
   }
 
   &__why-heading {
-    @include mono;
-    font-size: 11.5px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: oklch(0.55 0.012 260);
-    margin: 0 0 20px;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: $navy;
+    margin: 0 0 40px;
   }
 
   &__why-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 16px;
+    gap: 28px 32px;
   }
 }
 
 .why-card {
-  padding: 22px;
-  border-radius: $radius-md;
-  background: $surface;
-  border: 1px solid oklch(0.24 0.015 260 / 0.1);
-  @include card-lift;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
 
   &__icon {
-    width: 34px;
-    height: 34px;
-    border-radius: 9px;
+    width: 38px;
+    height: 38px;
+    border-radius: $radius-xs;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 12px;
+    flex-shrink: 0;
 
     &--accent {
-      background: $surface-white;
-      border: 1px solid oklch(0.24 0.015 260 / 0.1);
+      background: $surface-tan;
+      color: $navy;
     }
 
     &--accent2 {
-      background: var(--accent2-tint);
-      border: 1px solid oklch(0.24 0.015 260 / 0.1);
+      background: var(--accent);
+      color: $surface-white;
     }
   }
 
   &__title {
     @include display;
     font-size: 16.5px;
-    font-weight: 700;
-    letter-spacing: -0.015em;
+    font-weight: 600;
+    color: $navy;
+    margin-bottom: 6px;
   }
 
   &__body {
-    font-size: 14.5px;
-    line-height: 1.6;
-    color: oklch(0.48 0.012 260);
-    margin: 8px 0 0;
+    font-size: 14px;
+    line-height: 1.55;
+    color: $text3;
   }
 }

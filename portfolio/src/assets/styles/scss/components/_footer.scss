@@ -2,76 +2,134 @@
 @use '../base/mixins' as *;
 
 .site-footer {
-  background: $ink-900;
-  color: oklch(0.9 0.005 260);
+  background: $navy;
+  padding: 100px 0 0;
 
   &__inner {
-    max-width: $max-width;
-    margin: 0 auto;
-    padding: 44px 40px;
+    @include container;
+  }
+
+  &__cta {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: flex-end;
+    gap: 40px;
     flex-wrap: wrap;
-    gap: 32px;
+    padding-bottom: 64px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  &__cta-title {
+    @include display;
+    font-weight: 700;
+    font-size: clamp(40px, 6vw, 84px);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    color: $surface-white;
+    margin: 0;
+  }
+
+  &__cta-dot {
+    color: var(--accent);
+  }
+
+  &__cta-btn {
+    @include display;
+    font-weight: 600;
+    font-size: 16px;
+    background: var(--accent);
+    color: $navy;
+    padding: 16px 32px;
+    border-radius: $radius-pill;
+    white-space: nowrap;
+    transition: transform 0.2s;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+    gap: 40px;
+    padding: 64px 0;
+
+    @media (max-width: 760px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 480px) {
+      grid-template-columns: 1fr;
+    }
   }
 
   &__brand-row {
     display: flex;
     align-items: center;
-    gap: 11px;
-  }
-
-  &__mark {
-    width: 28px;
-    height: 28px;
-    border-radius: $radius-sm;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    color: $surface-white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 15px;
-    font-weight: 800;
+    gap: 12px;
+    margin-bottom: 20px;
   }
 
   &__name {
-    font-size: 18px;
+    @include display;
     font-weight: 700;
-    letter-spacing: -0.01em;
+    font-size: 22px;
+    color: $surface-white;
+  }
+
+  &__blurb {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.55);
+    max-width: 300px;
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  &__col-label {
+    @include mono;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 22px;
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    a, span {
+      @include display;
+      font-size: 17px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    a:hover {
+      color: var(--accent);
+    }
+  }
+
+  &__bottom {
+    padding: 28px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  &__copyright {
+    font-size: 13.5px;
+    color: rgba(255, 255, 255, 0.4);
   }
 
   &__tagline {
-    font-size: 14.5px;
-    color: oklch(0.72 0.01 260);
-    margin-top: 10px;
-  }
-
-  &__stack {
     @include mono;
-    font-size: 11.5px;
-    color: oklch(0.6 0.01 260);
-    margin-top: 14px;
-  }
-
-  &__nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 24px;
-    font-size: 14px;
-    color: oklch(0.75 0.01 260);
-
-    a {
-      transition: color 0.2s;
-
-      &:hover {
-        color: oklch(0.98 0 0);
-      }
-
-      &.is-active {
-        color: var(--accent-light);
-        font-weight: 600;
-      }
-    }
+    font-size: 12.5px;
+    color: rgba(255, 255, 255, 0.4);
   }
 }

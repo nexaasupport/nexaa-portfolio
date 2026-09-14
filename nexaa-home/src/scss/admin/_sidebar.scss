@@ -19,7 +19,7 @@
     gap: 8px;
     padding: 0 8px;
 
-    &::before { content: ''; width: 10px; height: 10px; border-radius: 3px; background: $accent; }
+    img { display: block; }
   }
 
   &__nav {

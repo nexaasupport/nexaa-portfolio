@@ -1,51 +1,99 @@
 @use '../base/variables' as *;
 @use '../base/mixins' as *;
 
+#pricing {
+  position: relative;
+  overflow: hidden;
+  background: $surface-alt;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -160px;
+    right: -100px;
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    background: $accent;
+    filter: blur(110px);
+    opacity: 0.14;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .section__inner { position: relative; z-index: 1; }
+}
+
 .pricing-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 22px;
   @include respond(md) { grid-template-columns: 1fr; }
 }
 
 .price-card {
   @include card;
-  padding: 32px 26px;
+  @include card-hover;
+  padding: 34px 28px;
   position: relative;
-
-  &--featured {
-    border-color: $brand-500;
-    box-shadow: $shadow-md;
-    transform: translateY(-8px);
-    @include respond(md) { transform: none; }
-  }
 
   &__badge {
     position: absolute;
-    top: -12px; right: 24px;
+    top: -13px; right: 26px;
     background: $accent;
     color: $ink-900;
-    font-size: 0.75rem;
+    font-size: 0.74rem;
     font-weight: 700;
-    padding: 5px 12px;
+    padding: 6px 14px;
     border-radius: $radius-pill;
+    box-shadow: $shadow-sm;
   }
 
-  h3 { font-size: 1.1rem; margin-bottom: 6px; }
-  &__price { font-family: $font-display; font-size: 2rem; color: $brand-900; margin-bottom: 4px; }
+  h3 { font-size: 1.12rem; margin-bottom: 8px; }
+  &__price { font-family: $font-display; font-weight: 500; font-size: 2.1rem; color: $brand-900; margin-bottom: 6px; }
   &__price span { font-size: 0.9rem; color: $ink-500; font-family: $font-body; }
-  p.desc { color: $ink-500; font-size: 0.88rem; margin-bottom: 20px; }
+  p.desc { color: $ink-500; font-size: 0.88rem; margin-bottom: 22px; }
 
   ul {
     list-style: none;
     padding: 0;
-    margin: 0 0 24px;
+    margin: 0 0 26px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 11px;
     font-size: 0.88rem;
     color: $ink-700;
 
-    li { display: flex; gap: 8px; align-items: flex-start; }
+    li { display: flex; gap: 9px; align-items: flex-start; }
+  }
+
+  // Featured-card overrides must come last so they win the cascade over the
+  // base rules above (equal specificity — source order decides).
+  &--featured {
+    background: $brand-900;
+    border-color: $brand-900;
+    color: $surface-white;
+    box-shadow: $shadow-md;
+    transform: translateY(-10px);
+    @include respond(md) { transform: none; }
+
+    &:hover { transform: translateY(-10px); box-shadow: $shadow-lg; }
+    @include respond(md) {
+      &:hover { transform: none; box-shadow: $shadow-lg; }
+    }
+
+    h3 { color: $surface-white; }
+    .price-card__price { color: $surface-white; }
+    .price-card__price span { color: oklch(1 0 0 / 0.65); }
+    p.desc { color: oklch(1 0 0 / 0.72); }
+
+    ul { color: oklch(1 0 0 / 0.92); }
+    ul li svg { color: $accent; }
+
+    .btn--primary {
+      background: $accent;
+      color: $ink-900;
+      &:hover { background: $accent-dark; }
+    }
   }
 }

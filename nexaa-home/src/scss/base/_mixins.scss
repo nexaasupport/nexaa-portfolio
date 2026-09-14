@@ -12,6 +12,15 @@
   box-shadow: $shadow-sm;
 }
 
+@mixin card-hover {
+  transition: transform 220ms cubic-bezier(.22, 1, .36, 1), box-shadow 220ms cubic-bezier(.22, 1, .36, 1);
+
+  &:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: $shadow-md;
+  }
+}
+
 @mixin btn-reset {
   border: none;
   background: none;

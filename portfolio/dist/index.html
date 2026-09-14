@@ -13,24 +13,48 @@
       rel="stylesheet"
     />
     <title>Nexaa — Build. Connect. Grow.</title>
-    <script type="module" crossorigin src="/assets/index-DAgGvZDT.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-vfO-sAdO.css">
+    <script type="module" crossorigin src="/assets/index-Cm6tATD_.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CK9dXkh9.css">
   </head>
   <body>
     <div id="top">
       <header class="site-header">
         <div class="site-header__inner">
           <a href="#top" class="site-header__brand">
-            <span aria-hidden="true" class="site-header__mark">N</span>
+            <img src="/logo-icon.svg" alt="" width="32" height="32" class="site-header__mark" />
             <span class="site-header__name">Nexaa</span>
           </a>
-          <nav aria-label="Primary" class="site-header__nav" data-nav></nav>
-          <a href="#contact" class="site-header__cta">Start a project</a>
+          <nav id="primary-nav" aria-label="Primary" class="site-header__nav" data-nav></nav>
+          <div class="site-header__actions">
+            <a href="#contact" class="site-header__cta">Start a project</a>
+            <button type="button" class="site-header__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-panel">
+              <span></span><span></span><span></span>
+            </button>
+          </div>
         </div>
       </header>
 
+      <div id="mobile-panel" class="site-header__mobile-panel" data-mobile-panel>
+        <div class="site-header__mobile-top">
+          <a href="#top" class="site-header__brand">
+            <img src="/logo-icon.svg" alt="" width="30" height="30" class="site-header__mark" />
+            <span class="site-header__name site-header__name--on-dark">Nexaa</span>
+          </a>
+          <button type="button" class="site-header__toggle site-header__toggle--close" aria-label="Close menu" data-nav-close>
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+        <nav aria-label="Mobile" class="site-header__mobile-nav" data-nav></nav>
+        <div class="site-header__mobile-footer">
+          <a href="#contact" class="site-header__cta site-header__cta--mobile">Start a project →</a>
+          <div class="site-header__mobile-contact">
+            <a href="mailto:nexaa.support@gmail.com">nexaa.support@gmail.com</a>
+            <a href="tel:+919488479124">+91 94884 79124</a>
+          </div>
+        </div>
+      </div>
+
       <section class="hero">
-        <div aria-hidden="true" class="hero__mark">N</div>
         <div class="hero__content">
           <div class="hero__eyebrow">
             <span class="hero__eyebrow-dot"></span>Faster delivery · Standard pricing
@@ -39,13 +63,11 @@
           <p class="hero__lead">Nexaa builds websites and internal software for organizations that need it working correctly the first time — delivered on a fixed timeline at a standard, published price.</p>
           <p class="hero__sub">No hourly guesswork, no scope creep. Every engagement runs on the same process and the same rate card, whether you're a five-person startup or a company replacing a system used by an entire team.</p>
           <div class="hero__actions">
-            <a href="#contact" class="btn btn--pill btn--gradient">Start a Project</a>
-            <a href="#work" class="btn--ghost">View Our Work</a>
+            <a href="#contact" class="btn btn--pill btn--primary">Start a Project</a>
+            <a href="#work" class="btn--link">View Our Work →</a>
           </div>
         </div>
-        <div class="hero__panel" aria-hidden="true">
-          <div class="hero__stack" data-hero-stats></div>
-        </div>
+        <div class="hero__panel" data-hero-stats></div>
       </section>
 
       <div class="marquee">
@@ -75,7 +97,7 @@
         <div class="work-section__inner">
           <div class="work-section__head">
             <h2>Selected work</h2>
-            <span class="work-section__tag">Self-initiated builds</span>
+            <span class="work-section__tag">Case studies</span>
           </div>
           <div class="work-section__grid" data-projects></div>
         </div>
@@ -111,56 +133,100 @@
       </section>
 
       <section id="contact" class="contact-section">
-        <div aria-hidden="true" class="contact-section__blob"></div>
         <div class="contact-section__inner">
-          <div>
+          <div class="contact-section__head">
             <h2 class="contact-section__title">Have a process that's slowing your team down?</h2>
             <p class="contact-section__lead">Describe the problem. You'll get back a scope, a timeline and the standard price for it.</p>
-            <div class="contact-section__details">
-              <div><a href="mailto:nexaa.support@gmail.com">nexaa.support@gmail.com</a></div>
-              <div><a href="tel:+919488479124">+91 94884 79124</a></div>
-              <div>Coimbatore, India</div>
-            </div>
-            <div class="contact-section__socials" data-socials></div>
           </div>
-          <form id="contact-form" novalidate class="contact-form">
-            <label class="contact-form__field">Name
-              <input name="name" type="text" placeholder="Your name" />
-            </label>
-            <label class="contact-form__field">Email
-              <input name="email" type="email" placeholder="you@company.com" />
-            </label>
-            <label class="contact-form__field">Organization
-              <input name="company" type="text" placeholder="Company or team name" />
-            </label>
-            <label class="contact-form__field">Project Type
-              <select name="type"></select>
-            </label>
-            <label class="contact-form__field contact-form__field--full">Budget
-              <select name="budget"></select>
-            </label>
-            <label class="contact-form__field contact-form__field--full">Message
-              <textarea name="message" rows="4" placeholder="What's the problem you need solved?"></textarea>
-            </label>
-            <div class="contact-form__actions">
-              <button type="submit" class="btn btn--pill btn--gradient contact-form__submit">Send message</button>
-              <span role="status" class="contact-form__status"></span>
+          <div class="contact-card">
+            <div class="contact-card__details">
+              <div>
+                <div class="contact-card__label">Contact details</div>
+                <div class="contact-card__fields">
+                  <div>
+                    <div class="contact-card__field-label">Email</div>
+                    <a href="mailto:nexaa.support@gmail.com">nexaa.support@gmail.com</a>
+                  </div>
+                  <div>
+                    <div class="contact-card__field-label">Phone</div>
+                    <a href="tel:+919488479124">+91 94884 79124</a>
+                  </div>
+                  <div>
+                    <div class="contact-card__field-label">Location</div>
+                    <div class="contact-card__field-value">Coimbatore, India</div>
+                  </div>
+                </div>
+              </div>
+              <div class="contact-card__socials" data-socials></div>
             </div>
-          </form>
+            <form id="contact-form" novalidate class="contact-form">
+              <label class="contact-form__field">Name
+                <input name="name" type="text" placeholder="Your name" />
+              </label>
+              <label class="contact-form__field">Email
+                <input name="email" type="email" placeholder="you@company.com" />
+              </label>
+              <label class="contact-form__field contact-form__field--full">Organization
+                <input name="company" type="text" placeholder="Company or team name" />
+              </label>
+              <label class="contact-form__field">Project Type
+                <select name="type"></select>
+              </label>
+              <label class="contact-form__field">Budget
+                <select name="budget"></select>
+              </label>
+              <label class="contact-form__field contact-form__field--full">Message
+                <textarea name="message" rows="4" placeholder="What's the problem you need solved?"></textarea>
+              </label>
+              <div class="contact-form__actions">
+                <button type="submit" class="btn btn--pill btn--primary contact-form__submit">Send message</button>
+                <span role="status" class="contact-form__status"></span>
+              </div>
+            </form>
+          </div>
         </div>
       </section>
 
       <footer class="site-footer">
         <div class="site-footer__inner">
-          <div>
-            <div class="site-footer__brand-row">
-              <span aria-hidden="true" class="site-footer__mark">N</span>
-              <span class="site-footer__name">Nexaa</span>
-            </div>
-            <div class="site-footer__tagline">Build. Connect. Grow.</div>
-            <div class="site-footer__stack">Web Design • Web Applications • Full-Stack Solutions</div>
+          <div class="site-footer__cta">
+            <h2 class="site-footer__cta-title">Let's build<br />something<span class="site-footer__cta-dot">.</span></h2>
+            <a href="#contact" class="site-footer__cta-btn">Start a project →</a>
           </div>
-          <nav aria-label="Footer" class="site-footer__nav" data-nav></nav>
+          <div class="site-footer__grid">
+            <div class="site-footer__brand">
+              <div class="site-footer__brand-row">
+                <img src="/logo-icon.svg" alt="" width="34" height="34" class="site-footer__mark" />
+                <span class="site-footer__name">Nexaa</span>
+              </div>
+              <p class="site-footer__blurb">Websites and software for organizations, built on a fixed process and a standard, published price.</p>
+            </div>
+            <div class="site-footer__col">
+              <div class="site-footer__col-label">Navigate</div>
+              <nav aria-label="Footer" class="site-footer__links" data-nav></nav>
+            </div>
+            <div class="site-footer__col">
+              <div class="site-footer__col-label">Services</div>
+              <nav class="site-footer__links">
+                <a href="#services">Web Design</a>
+                <a href="#services">Web Applications</a>
+                <a href="#services">Full-Stack</a>
+                <a href="#services">Maintenance</a>
+              </nav>
+            </div>
+            <div class="site-footer__col">
+              <div class="site-footer__col-label">Contact</div>
+              <div class="site-footer__links">
+                <a href="mailto:nexaa.support@gmail.com">nexaa.support@gmail.com</a>
+                <a href="tel:+919488479124">+91 94884 79124</a>
+                <span>Coimbatore, India</span>
+              </div>
+            </div>
+          </div>
+          <div class="site-footer__bottom">
+            <span class="site-footer__copyright">© 2026 Nexaa. All rights reserved.</span>
+            <span class="site-footer__tagline">Build. Connect. Grow.</span>
+          </div>
         </div>
       </footer>
     </div>

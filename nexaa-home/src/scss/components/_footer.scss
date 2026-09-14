@@ -2,19 +2,112 @@
 @use '../base/mixins' as *;
 
 .site-footer {
-  padding: 40px 0;
-  border-top: 1px solid $border;
+  background: $ink-900;
+  color: oklch(1 0 0 / 0.62);
 
-  &__inner {
+  &__top {
+    @include container;
+    display: grid;
+    grid-template-columns: 1.4fr 0.8fr 0.8fr 1fr;
+    gap: 40px;
+    padding: 76px 0 56px;
+    @include respond(lg) { grid-template-columns: 1fr 1fr; row-gap: 40px; }
+    @include respond(sm) { grid-template-columns: 1fr; }
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+
+    span {
+      font-family: $font-display;
+      font-weight: 600;
+      font-size: 1.15rem;
+      color: $surface-white;
+    }
+  }
+
+  &__blurb {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    max-width: 34ch;
+    margin-bottom: 22px;
+  }
+
+  &__socials {
+    display: flex;
+    gap: 10px;
+
+    a {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      border: 1px solid oklch(1 0 0 / 0.14);
+      display: flex; align-items: center; justify-content: center;
+      color: oklch(1 0 0 / 0.7);
+      transition: color $transition, border-color $transition, background $transition;
+
+      &:hover { color: $ink-900; background: $accent; border-color: $accent; }
+    }
+  }
+
+  &__col {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    align-items: flex-start;
+
+    a, span { font-size: 0.88rem; color: oklch(1 0 0 / 0.62); transition: color $transition; }
+    a:hover { color: $surface-white; }
+  }
+
+  &__col-title {
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: oklch(1 0 0 / 0.4);
+    margin-bottom: 4px;
+  }
+
+  &__col--contact .site-footer__cta {
+    margin-top: 6px;
+  }
+
+  &__bottom {
+    border-top: 1px solid oklch(1 0 0 / 0.1);
+  }
+
+  &__bottom-inner {
     @include container;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 12px;
-    color: $ink-500;
-    font-size: 0.85rem;
+    gap: 16px;
+    padding: 22px 0;
+    font-size: 0.82rem;
   }
 
-  &__links { display: flex; gap: 20px; }
+  &__legal {
+    display: flex;
+    gap: 22px;
+
+    a { color: oklch(1 0 0 / 0.55); transition: color $transition; }
+    a:hover { color: $surface-white; }
+  }
+
+  &__top-btn {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: oklch(1 0 0 / 0.08);
+    border: 1px solid oklch(1 0 0 / 0.16);
+    display: flex; align-items: center; justify-content: center;
+    color: $surface-white;
+    transition: background $transition, transform $transition;
+    flex-shrink: 0;
+
+    &:hover { background: $accent; color: $ink-900; transform: translateY(-2px); }
+  }
 }
