@@ -1,24 +1,50 @@
-const LINKS = [
-  { route: 'dashboard', label: 'Dashboard' },
-  { route: 'jobs', label: 'Jobs' },
-  { route: 'customers', label: 'Customers' },
-  { route: 'technicians', label: 'Technicians' },
-  { route: 'payments', label: 'Payments' },
-  { route: 'settings', label: 'Settings' },
-]
+import { initials } from '../../lib/dom.js'
+import { icon } from './icons.js'
+import { groupsForRole } from '../nav.js'
 
-export function renderSidebar() {
+export function renderSidebar(session) {
+  const name = session?.name || 'Ops Manager'
+  const email = session?.email || ''
+  const groups = groupsForRole(session?.role)
+
   return `
     <aside class="admin-sidebar">
-      <a class="admin-sidebar__logo" href="/">
-        <img src="/logo-mark.svg" alt="" width="20" height="20" />
-        Nexaa Home
-      </a>
+      <div class="admin-sidebar__head">
+        <a class="admin-sidebar__logo" href="/">
+          <img src="/logo-mark.svg" alt="" width="20" height="20" />
+          Nexaa Home
+        </a>
+        <button type="button" class="admin-sidebar__close" data-sidebar-toggle aria-label="Close menu">
+          ${icon('close', { size: 18 })}
+        </button>
+      </div>
       <nav class="admin-sidebar__nav">
-        ${LINKS.map(
-          (l) => `<a class="admin-sidebar__link" href="#/${l.route}" data-route-link="${l.route}">${l.label}</a>`
-        ).join('')}
+        ${groups
+          .map(
+            (group) => `
+          <div class="admin-sidebar__group">
+            ${group.label ? `<div class="admin-sidebar__group-label">${group.label}</div>` : ''}
+            ${group.links
+              .map(
+                (l) => `<a class="admin-sidebar__link" href="#/${l.route}" data-route-link="${l.route}">
+                ${icon(l.icon, { size: 18, class: 'admin-sidebar__icon' })}
+                <span>${l.label}</span>
+              </a>`
+              )
+              .join('')}
+          </div>`
+          )
+          .join('')}
       </nav>
-      <div class="admin-sidebar__footer">Signed in as Ops Manager</div>
+      <div class="admin-sidebar__footer">
+        <div class="admin-sidebar__user-avatar">${initials(name)}</div>
+        <div class="admin-sidebar__user-info">
+          <div class="admin-sidebar__user-name">${name}</div>
+          <div class="admin-sidebar__user-role">${email || 'Signed in'}</div>
+        </div>
+        <button type="button" class="admin-sidebar__logout" data-logout aria-label="Log out" title="Log out">
+          ${icon('log-out', { size: 16 })}
+        </button>
+      </div>
     </aside>`
 }

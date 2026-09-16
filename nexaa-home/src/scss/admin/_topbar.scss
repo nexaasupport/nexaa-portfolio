@@ -1,33 +1,162 @@
-@use '../base/variables' as *;
 @use '../base/mixins' as *;
+@use 'tokens' as *;
 
 .admin-topbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 18px 32px;
-  border-bottom: 1px solid $border;
-  background: $surface-white;
-  @include respond(sm) { padding: 14px 16px; }
+  gap: 12px;
+  padding: 16px 28px;
+  border-bottom: 1px solid $a-border;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  @include respond(sm) { padding: 12px 14px; }
 
-  &__title { font-weight: 600; font-size: 0.95rem; }
-  &__meta { font-size: 0.82rem; color: $ink-500; }
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+  }
 
-  &__user {
+  &__menu {
+    @include btn-reset;
+    @include focus-ring;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 34px; height: 34px;
+    border-radius: $a-radius-sm;
+    color: $a-ink-700;
+    flex-shrink: 0;
+
+    &:hover { background: $a-surface; }
+
+    @include respond(md) { display: flex; }
+  }
+
+  &__title { font-weight: 700; font-size: 1.06rem; letter-spacing: -0.01em; color: $a-ink-900; }
+  &__meta {
+    font-size: 0.78rem;
+    color: $a-ink-500;
+    margin-top: 1px;
+    @include truncate;
+    max-width: 60vw;
+  }
+
+  &__right {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 0.85rem;
-    color: $ink-700;
+    flex-shrink: 0;
+  }
+
+  &__bell {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    color: $a-ink-700;
+    transition: background $a-transition, color $a-transition;
+
+    &:hover { background: $a-surface; color: $a-accent-dark; }
+  }
+
+  &__bell-dot {
+    position: absolute;
+    top: 8px; right: 8px;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: $a-danger;
+    box-shadow: 0 0 0 2px #fff;
+  }
+
+  &__user {
+    position: relative;
+
+    &[open] .admin-topbar__user-summary { background: $a-surface; }
+    &[open] .admin-topbar__chevron { transform: rotate(90deg); }
+  }
+
+  &__user-summary {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: $a-ink-700;
+    list-style: none;
+    cursor: pointer;
+    padding: 5px 10px 5px 5px;
+    border-radius: $a-radius-pill;
+    transition: background $a-transition;
+    user-select: none;
+
+    &::-webkit-details-marker { display: none; }
+    &:hover { background: $a-surface; }
+
+    span { @include respond(sm) { display: none; } }
+  }
+
+  &__chevron {
+    transform: rotate(-90deg);
+    transition: transform $a-transition;
+    color: $a-ink-300;
+    @include respond(sm) { display: none; }
   }
 
   &__avatar {
-    width: 32px; height: 32px;
+    width: 30px; height: 30px;
     border-radius: 50%;
-    background: $brand-200;
-    color: $brand-900;
+    background: $a-accent-soft;
+    color: $a-accent-dark;
     display: flex; align-items: center; justify-content: center;
     font-weight: 700;
-    font-size: 0.78rem;
+    font-size: 0.74rem;
+    flex-shrink: 0;
+  }
+
+  &__user-panel {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    width: 200px;
+    background: $a-surface-white;
+    border: 1px solid $a-border;
+    border-radius: $a-radius-md;
+    box-shadow: $a-shadow-lg;
+    padding: 10px;
+    z-index: 40;
+    animation: fade-up 0.16s ease;
+  }
+
+  &__user-email {
+    font-size: 0.76rem;
+    color: $a-ink-500;
+    padding: 4px 8px 8px;
+    border-bottom: 1px solid $a-border;
+    margin-bottom: 6px;
+    @include truncate;
+  }
+
+  &__user-action {
+    @include btn-reset;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 8px;
+    border-radius: $a-radius-sm;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: $a-danger;
+    transition: background $a-transition;
+
+    &:hover { background: $a-danger-soft; }
   }
 }

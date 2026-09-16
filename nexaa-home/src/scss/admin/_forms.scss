@@ -1,0 +1,134 @@
+@use '../base/mixins' as *;
+@use 'tokens' as *;
+
+// The shared .field/.btn/.modal-card styles (base/_base.scss) use the public
+// site's warm border tone. Re-tint form fields to the admin's cool slate
+// borders so hand-built admin forms (below) don't look mismatched next to them.
+.admin-shell, .admin-auth {
+  .field {
+    label { color: $a-ink-700; }
+    input, select, textarea {
+      border-color: $a-border;
+      color: $a-ink-900;
+      &:focus { border-color: $a-accent; }
+    }
+  }
+
+  // Re-tint the shared button system to the admin's accent so the whole
+  // surface reads as one product instead of two competing brand colors.
+  .btn--primary {
+    background: $a-ink-900;
+    &:hover { background: $a-accent-dark; }
+  }
+  .btn--accent {
+    background: $a-accent;
+    color: #fff;
+    box-shadow: none;
+    &:hover { background: $a-accent-dark; }
+  }
+  .btn--ghost {
+    border-color: $a-border;
+    color: $a-ink-700;
+    &:hover { border-color: $a-accent; background: $a-surface-alt; }
+  }
+  .btn:focus-visible { outline-color: $a-accent; }
+}
+
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  &__submit { align-self: flex-start; }
+}
+
+.settings-hint {
+  color: $a-ink-500;
+  font-size: 0.82rem;
+  margin-bottom: 14px;
+}
+
+.settings-service-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.settings-service-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 10px;
+  border: 1px solid $a-border;
+  border-radius: $a-radius-sm;
+  font-size: 0.85rem;
+  color: $a-ink-900;
+}
+
+.settings-add-service {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+
+  input {
+    padding: 9px 11px;
+    border: 1px solid $a-border;
+    border-radius: $a-radius-sm;
+    font-size: 0.85rem;
+
+    &:focus { outline: none; border-color: $a-accent; }
+  }
+
+  input[name='name'] { flex: 1; min-width: 140px; }
+  input[name='price'] { width: 100px; }
+  input[name='gstRate'] { width: 80px; }
+}
+
+.settings-hours {
+  margin-top: 14px;
+  margin-bottom: 14px;
+
+  &__grid {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    margin-bottom: 16px;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 100px 1fr auto 1fr auto;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.84rem;
+    @include respond(sm) { grid-template-columns: 1fr 1fr; }
+  }
+
+  &__day { font-weight: 600; color: $a-ink-700; }
+
+  &__row input[type='time'] {
+    padding: 6px 9px;
+    border: 1px solid $a-border;
+    border-radius: $a-radius-sm;
+    font-size: 0.82rem;
+
+    &:focus { outline: none; border-color: $a-accent; }
+  }
+
+  &__closed {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    color: $a-ink-500;
+    white-space: nowrap;
+  }
+}
+
+.settings-danger {
+  margin-top: 14px;
+  border-color: rgba(220, 38, 38, 0.3);
+
+  p { color: $a-ink-500; font-size: 0.85rem; margin-bottom: 12px; }
+}

@@ -1,0 +1,41 @@
+// Admin design tokens — a thin alias layer over the public site's base
+// tokens (src/scss/base/_variables.scss), so the whole product (public
+// site, customer account, admin) shares one color/type system. Admin keeps
+// its own tighter radius scale and faster transition: a legitimate density
+// difference for data-heavy ops screens, not a second brand.
+@use '../base/variables' as base;
+
+$a-ink-900: base.$ink-900;
+$a-ink-700: base.$ink-700;
+$a-ink-500: base.$ink-500;
+$a-ink-300: base.$ink-300;
+
+$a-surface: base.$surface-alt;
+$a-surface-white: base.$surface-white;
+$a-surface-alt: base.$surface;
+$a-border: base.$border;
+
+$a-accent: base.$brand-500;
+$a-accent-dark: base.$brand-700;
+$a-accent-soft: base.$brand-200;
+
+$a-success: base.$success;
+$a-success-soft: color-mix(in oklch, #{base.$success} 16%, white);
+$a-warning: base.$warning;
+$a-warning-soft: color-mix(in oklch, #{base.$warning} 18%, white);
+$a-danger: base.$danger;
+$a-danger-soft: color-mix(in oklch, #{base.$danger} 14%, white);
+$a-info-soft: color-mix(in oklch, #{base.$info} 16%, white);
+
+$a-radius-sm: 8px;
+$a-radius-md: 12px;
+$a-radius-lg: 16px;
+$a-radius-pill: 999px;
+
+$a-shadow-sm: base.$shadow-sm;
+$a-shadow-md: base.$shadow-md;
+$a-shadow-lg: base.$shadow-lg;
+
+$a-font: base.$font-body;
+$a-font-display: base.$font-display;
+$a-transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);

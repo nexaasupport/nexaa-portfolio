@@ -1,23 +1,23 @@
-// Palette: "Nexaa Home — Ink & Brass"
-// A deep ink-emerald brand paired with a warm brass accent on a warm ivory
-// surface — reads as a premium, trustworthy home-services concierge brand.
-$brand-900: oklch(0.24 0.045 175);
-$brand-700: oklch(0.34 0.06 175);
-$brand-500: oklch(0.48 0.07 175);
-$brand-200: oklch(0.91 0.025 175);
+// Palette: "Nexaa Home — Indigo & Coral"
+// A confident indigo brand paired with a warm coral accent on a clean,
+// near-white surface — reads as a modern, energetic home-services platform.
+$brand-900: oklch(0.32 0.135 265);
+$brand-700: oklch(0.42 0.155 265);
+$brand-500: oklch(0.56 0.16 265);
+$brand-200: oklch(0.93 0.03 265);
 
-$accent: oklch(0.76 0.13 80); // warm brass CTA accent
-$accent-dark: oklch(0.62 0.12 75);
+$accent: oklch(0.72 0.19 35); // warm coral CTA accent
+$accent-dark: oklch(0.6 0.19 30);
 
-$surface: oklch(0.99 0.005 85); // warm ivory
+$surface: oklch(0.995 0.003 260); // clean near-white
 $surface-white: oklch(1 0 0);
-$surface-alt: oklch(0.965 0.008 85);
+$surface-alt: oklch(0.968 0.006 260);
 
-$ink-900: oklch(0.19 0.015 260);
-$ink-700: oklch(0.32 0.014 260);
-$ink-500: oklch(0.48 0.012 260);
-$ink-300: oklch(0.68 0.008 260);
-$border: oklch(0.9 0.008 85);
+$ink-900: oklch(0.18 0.014 260);
+$ink-700: oklch(0.32 0.012 260);
+$ink-500: oklch(0.5 0.01 260);
+$ink-300: oklch(0.7 0.008 260);
+$border: oklch(0.9 0.007 260);
 
 $success: oklch(0.68 0.15 155);
 $warning: oklch(0.78 0.15 80);
@@ -30,7 +30,7 @@ $radius-md: 22px;
 $radius-lg: 30px;
 $radius-pill: 999px;
 
-$font-display: 'Fraunces', 'Georgia', serif;
+$font-display: 'Sora', 'Segoe UI', sans-serif;
 $font-body: 'Inter', 'Segoe UI', sans-serif;
 
 $shadow-sm: 0 1px 3px oklch(0.19 0.015 260 / 0.07);

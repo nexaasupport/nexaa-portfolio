@@ -40,6 +40,9 @@
   &__badge {
     position: absolute;
     top: -13px; right: 26px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
     background: $accent;
     color: $ink-900;
     font-size: 0.74rem;
@@ -70,16 +73,16 @@
   // Featured-card overrides must come last so they win the cascade over the
   // base rules above (equal specificity — source order decides).
   &--featured {
-    background: $brand-900;
+    background: linear-gradient(160deg, $brand-700, $brand-900 60%);
     border-color: $brand-900;
     color: $surface-white;
-    box-shadow: $shadow-md;
+    box-shadow: 0 20px 44px oklch(0.32 0.135 265 / 0.32);
     transform: translateY(-10px);
     @include respond(md) { transform: none; }
 
-    &:hover { transform: translateY(-10px); box-shadow: $shadow-lg; }
+    &:hover { transform: translateY(-12px); box-shadow: 0 26px 56px oklch(0.32 0.135 265 / 0.4); }
     @include respond(md) {
-      &:hover { transform: none; box-shadow: $shadow-lg; }
+      &:hover { transform: none; box-shadow: 0 26px 56px oklch(0.32 0.135 265 / 0.4); }
     }
 
     h3 { color: $surface-white; }

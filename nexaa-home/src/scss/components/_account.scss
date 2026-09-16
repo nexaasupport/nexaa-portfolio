@@ -1,0 +1,140 @@
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+// Header "My Account" dropdown — mirrors the admin topbar's user menu
+// pattern (native <details>, no JS toggle needed).
+.site-header__account {
+  position: relative;
+
+  &-summary {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: $ink-700;
+    list-style: none;
+    cursor: pointer;
+    padding: 6px 4px;
+    transition: color $transition;
+
+    &::-webkit-details-marker { display: none; }
+    &:hover { color: $brand-900; }
+  }
+
+  &-panel {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    width: 180px;
+    background: $surface-white;
+    border: 1px solid $border;
+    border-radius: $radius-sm;
+    box-shadow: $shadow-lg;
+    padding: 8px;
+    z-index: 60;
+    animation: fade-up 0.16s ease;
+
+    a, button {
+      @include btn-reset;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: $radius-sm;
+      font-size: 0.86rem;
+      font-weight: 500;
+      color: $ink-700;
+      text-align: left;
+      transition: background $transition;
+
+      &:hover { background: $surface-alt; }
+    }
+
+    button { color: $danger; }
+  }
+}
+
+// "My Account" dashboard
+.account-shell {
+  @include container;
+  padding: 140px 0 80px;
+  min-height: 100vh;
+
+  &__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 36px;
+  }
+
+  &__identity {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    h1 { font-family: $font-display; font-weight: 600; font-size: 1.5rem; margin-bottom: 2px; }
+    p { color: $ink-500; font-size: 0.9rem; }
+  }
+
+  &__avatar {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: $brand-900;
+    color: $surface-white;
+    display: flex; align-items: center; justify-content: center;
+    font-family: $font-display;
+    font-weight: 600;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  &__actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 32px;
+    align-items: start;
+    @include respond(lg) { grid-template-columns: 1fr; }
+  }
+
+  &__main h2 {
+    font-family: $font-display;
+    font-weight: 600;
+    font-size: 1.15rem;
+    margin-bottom: 16px;
+  }
+
+  &__section-gap { margin-top: 36px; }
+
+  &__bookings {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  &__empty {
+    color: $ink-500;
+    padding: 24px;
+    border: 1px dashed $border;
+    border-radius: $radius-md;
+    text-align: center;
+
+    a { color: $brand-700; font-weight: 600; }
+  }
+
+  &__side { position: sticky; top: 100px; }
+
+  &__panel {
+    @include card;
+    padding: 24px;
+
+    h3 { font-family: $font-display; font-weight: 600; font-size: 1.02rem; margin-bottom: 16px; }
+
+    form { display: flex; flex-direction: column; gap: 14px; }
+  }
+}

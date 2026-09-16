@@ -36,8 +36,49 @@ const ICONS = {
     <path d="M14.7 6.3a4 4 0 0 1-5.4 5.4L4 17l3 3 5.3-5.3a4 4 0 0 1 5.4-5.4l-3-3z"/>
     <path d="M17.5 4.3l2.2 2.2-1.3 1.3-2.2-2.2z" stroke-width="1.4"/>
   `,
+  shirt: (fill) => `
+    <path d="M8 4 4 7l2 3 2-1.5V20h8V8.5L18 10l2-3-4-3-2 2h-4L8 4z" fill="${fill}" stroke="none"/>
+    <path d="M8 4 4 7l2 3 2-1.5V20h8V8.5L18 10l2-3-4-3-2 2h-4L8 4z"/>
+  `,
+  quote: () => `
+    <path d="M7.5 8.5C5.6 8.5 4 10.1 4 12s1.6 3.5 3.5 3.5c.4 0 .7-.05 1-.15C8 17.3 6.6 18.5 5 19" stroke-width="1.6"/>
+    <path d="M17 8.5c-1.9 0-3.5 1.6-3.5 3.5s1.6 3.5 3.5 3.5c.4 0 .7-.05 1-.15-.5 2-1.9 3.2-3.5 4.2" stroke-width="1.6"/>
+  `,
   check: () => `<path d="M20 6 9 17l-5-5"/>`,
   chat: () => `<path d="M21 15a2 2 0 0 1-2 2H8l-5 3V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>`,
+  mail: (fill) => `
+    <rect x="2.5" y="4.5" width="19" height="15" rx="2.5" fill="${fill}" stroke="none"/>
+    <rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/>
+    <path d="m3 6.5 9 6.5 9-6.5"/>
+  `,
+  lock: (fill) => `
+    <rect x="4.5" y="10.5" width="15" height="10" rx="2" fill="${fill}" stroke="none"/>
+    <rect x="4.5" y="10.5" width="15" height="10" rx="2"/>
+    <path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/>
+  `,
+  user: (fill) => `
+    <circle cx="12" cy="8" r="4" fill="${fill}" stroke="none"/>
+    <circle cx="12" cy="8" r="4"/>
+    <path d="M4 20a8 8 0 0 1 16 0"/>
+  `,
+  'log-out': () => `<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/>`,
+  calendar: (fill) => `
+    <rect x="3" y="4.5" width="18" height="16" rx="2.5" fill="${fill}" stroke="none"/>
+    <rect x="3" y="4.5" width="18" height="16" rx="2.5"/>
+    <path d="M16 3v4M8 3v4M3 10h18"/>
+  `,
+  'user-check': (fill) => `
+    <circle cx="9" cy="9" r="4" fill="${fill}" stroke="none"/>
+    <circle cx="9" cy="9" r="4"/>
+    <path d="M2 20a7 7 0 0 1 14 0"/>
+    <path d="m16 11 2 2 4-4"/>
+  `,
+  'arrow-right': () => `<path d="M5 12h14M13 6l6 6-6 6"/>`,
+  star: () => `<path d="M12 2.5l2.9 6 6.6.7-4.9 4.6 1.3 6.5L12 17l-5.9 3.3 1.3-6.5-4.9-4.6 6.6-.7L12 2.5z" fill="currentColor" stroke="none"/>`,
+  phone: (fill) => `
+    <path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11 11 0 0 0 3.5.56 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11 11 0 0 0 .56 3.5 1 1 0 0 1-.25 1z" fill="${fill}" stroke="none"/>
+    <path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11 11 0 0 0 3.5.56 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11 11 0 0 0 .56 3.5 1 1 0 0 1-.25 1z"/>
+  `,
 }
 
 const TONE_FILL = {

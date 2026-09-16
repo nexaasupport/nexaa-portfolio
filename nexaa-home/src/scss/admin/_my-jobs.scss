@@ -1,0 +1,68 @@
+@use 'tokens' as *;
+
+.my-jobs {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  &__card {
+    background: $a-surface-white;
+    border: 1px solid $a-border;
+    border-radius: $a-radius-md;
+    box-shadow: $a-shadow-sm;
+    padding: 16px 18px;
+  }
+
+  &__head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  &__service {
+    font-weight: 700;
+    font-size: 0.98rem;
+    color: $a-ink-900;
+  }
+
+  &__time {
+    font-size: 0.82rem;
+    color: $a-ink-500;
+    margin-top: 2px;
+  }
+
+  &__customer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 12px;
+    font-size: 0.85rem;
+    color: $a-ink-700;
+    margin-bottom: 8px;
+
+    span { color: $a-ink-500; }
+  }
+
+  &__notes {
+    font-size: 0.82rem;
+    color: $a-ink-500;
+    background: $a-surface-alt;
+    border-radius: $a-radius-sm;
+    padding: 8px 10px;
+    margin-bottom: 12px;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  &__price {
+    font-weight: 700;
+    color: $a-ink-900;
+    font-variant-numeric: tabular-nums;
+  }
+}

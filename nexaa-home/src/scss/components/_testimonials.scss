@@ -3,22 +3,40 @@
 
 .testimonial-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 22px;
-  @include respond(md) { grid-template-columns: 1fr; }
+  @include respond(lg) { grid-template-columns: repeat(2, 1fr); }
+  @include respond(sm) { grid-template-columns: 1fr; }
 }
 
 .testimonial-card {
   @include card;
   @include card-hover;
+  position: relative;
   padding: 32px;
 
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  &__mark {
+    display: inline-flex;
+    color: $brand-200;
+  }
+
+  &__stars {
+    display: flex;
+    gap: 2px;
+    color: $accent;
+  }
+
   &__quote {
-    font-family: $font-display;
-    font-style: italic;
-    font-weight: 400;
-    font-size: 1.15rem;
-    line-height: 1.5;
+    font-weight: 500;
+    font-size: 1.02rem;
+    line-height: 1.55;
     color: $ink-900;
     margin-bottom: 22px;
   }
@@ -35,12 +53,12 @@
   &__avatar {
     width: 44px; height: 44px;
     border-radius: 50%;
-    background: $brand-900;
+    object-fit: cover;
     box-shadow: 0 0 0 3px $surface-white, 0 0 0 4px $brand-200;
-    color: $surface-white;
-    display: flex; align-items: center; justify-content: center;
-    font-family: $font-display;
-    font-weight: 600;
-    font-size: 0.85rem;
+    transition: box-shadow $transition;
+  }
+
+  &:hover &__avatar {
+    box-shadow: 0 0 0 3px $surface-white, 0 0 0 4px $accent;
   }
 }

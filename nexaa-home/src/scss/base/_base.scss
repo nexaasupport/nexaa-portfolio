@@ -89,6 +89,10 @@ button, input, select, textarea { font-family: inherit; }
   &--available { background: oklch(0.92 0.08 155); color: oklch(0.35 0.1 155); }
   &--on_job { background: oklch(0.9 0.06 230); color: $brand-700; }
   &--off { background: $surface-alt; color: $ink-500; }
+  &--notif-sent { background: oklch(0.92 0.08 155); color: oklch(0.35 0.1 155); }
+  &--notif-failed { background: oklch(0.92 0.03 25); color: $danger; }
+  &--notif-skipped { background: $surface-alt; color: $ink-500; }
+  &--notif-sending { background: oklch(0.92 0.05 80); color: oklch(0.4 0.1 80); }
 }
 
 .visually-hidden {
@@ -175,6 +179,50 @@ button, input, select, textarea { font-family: inherit; }
 
   &.has-error input, &.has-error textarea { border-color: $danger; }
   .field-error { font-size: 0.78rem; color: $danger; }
+}
+
+// Printable receipt overlay — hidden on screen, shown only when printing.
+.receipt-print {
+  display: none;
+}
+
+@media print {
+  body > *:not(.receipt-print) { display: none !important; }
+
+  .receipt-print {
+    display: block !important;
+    position: fixed;
+    inset: 0;
+    background: $surface-white;
+    padding: 24px;
+  }
+
+  .receipt-print__card {
+    max-width: 480px;
+    margin: 0 auto;
+    color: $ink-900;
+
+    h2 { font-family: $font-display; margin-bottom: 4px; }
+  }
+
+  .receipt-print__meta { color: $ink-500; font-size: 0.85rem; margin-bottom: 14px; }
+
+  .receipt-print__table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+
+    td { padding: 6px 0; }
+    td:last-child { text-align: right; }
+  }
+
+  .receipt-print__total td {
+    font-weight: 700;
+    border-top: 1px solid $border;
+    padding-top: 10px;
+  }
+
+  .receipt-print__method, .receipt-print__thanks { font-size: 0.85rem; color: $ink-500; margin-top: 8px; }
 }
 
 // Toasts

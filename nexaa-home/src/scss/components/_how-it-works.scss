@@ -5,20 +5,55 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 28px;
+  position: relative;
   @include respond(lg) { grid-template-columns: repeat(2, 1fr); }
+
+  // Connecting line across the row, desktop only — sits behind the cards.
+  @media (min-width: 1181px) {
+    &::before {
+      content: '';
+      position: absolute;
+      top: 38px;
+      left: calc(12.5% + 20px);
+      right: calc(12.5% + 20px);
+      height: 2px;
+      background: repeating-linear-gradient(90deg, $border 0 8px, transparent 8px 14px);
+    }
+  }
 }
 
 .step-card {
   position: relative;
-  padding-top: 18px;
-  border-top: 2px solid $border;
+  background: $surface-white;
+  border: 1px solid $border;
+  border-radius: $radius-md;
+  padding: 24px 22px;
+  z-index: 1;
+  transition: transform $transition, box-shadow $transition, border-color $transition;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: $shadow-md;
+    border-color: $brand-200;
+  }
+
+  &__icon {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: $surface-white;
+    border: 2px solid $brand-500;
+    color: $brand-700;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 16px;
+    box-shadow: 0 0 0 6px $surface-alt;
+  }
 
   &__num {
     font-family: $font-display;
-    font-size: 2rem;
-    font-weight: 500;
-    font-style: italic;
-    color: $brand-500;
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: $brand-200;
+    -webkit-text-stroke: 1.5px $brand-500;
     margin-bottom: 10px;
     display: block;
   }

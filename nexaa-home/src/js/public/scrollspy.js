@@ -5,7 +5,7 @@ export function initScrollSpy() {
   const sections = navLinks
     .map((link) => {
       const id = link.getAttribute('href')
-      if (!id || id === '#top') return null
+      if (!id || id === '#top' || id.startsWith('#/')) return null
       const el = document.querySelector(id)
       return el ? { id, el } : null
     })

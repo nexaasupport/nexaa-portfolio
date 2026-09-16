@@ -1,11 +1,51 @@
-@use '../base/variables' as *;
-@use '../base/mixins' as *;
+@use 'tokens' as *;
 
 .stat-card {
-  @include card;
-  padding: 20px;
+  background: $a-surface-white;
+  border: 1px solid $a-border;
+  border-radius: $a-radius-md;
+  padding: 16px 18px;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow $a-transition, border-color $a-transition;
 
-  &__label { font-size: 0.82rem; color: $ink-500; margin-bottom: 8px; }
-  &__value { font-family: $font-display; font-size: 1.6rem; color: $ink-900; }
-  &__delta { font-size: 0.78rem; color: $success; margin-top: 4px; }
+  &:hover {
+    box-shadow: $a-shadow-md;
+    border-color: $a-ink-300;
+  }
+
+  &__icon {
+    width: 30px; height: 30px;
+    border-radius: $a-radius-sm;
+    background: $a-accent-soft;
+    color: $a-accent-dark;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+  &__label {
+    font-size: 0.74rem;
+    color: $a-ink-500;
+    margin-bottom: 6px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  &__value {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: $a-ink-900;
+    letter-spacing: -0.01em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__delta {
+    font-size: 0.76rem;
+    color: $a-success;
+    margin-top: 5px;
+    font-weight: 600;
+  }
 }

@@ -17,5 +17,9 @@ export function createRouter(routes, mountEl, defaultRoute = 'dashboard') {
   if (!window.location.hash) window.location.hash = `#/${defaultRoute}`
   else render()
 
-  return { render, currentRoute }
+  function destroy() {
+    window.removeEventListener('hashchange', render)
+  }
+
+  return { render, currentRoute, destroy }
 }

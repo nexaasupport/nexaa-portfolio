@@ -1,6 +1,6 @@
 import { qs, qsa } from '../lib/dom.js'
 import { getServices } from '../lib/store.js'
-import { icon, iconPaths } from './icons.js'
+import { icon } from './icons.js'
 import { nav, heroStats, steps, workGallery, plans, testimonials } from './content.js'
 
 export function renderNav() {
@@ -13,14 +13,14 @@ export function renderHeroStats() {
   const el = qs('[data-hero-stats]')
   if (!el) return
   el.innerHTML = heroStats
-    .map((s) => `<div class="hero__stat"><strong>${s.value}</strong><span>${s.label}</span></div>`)
+    .map((s) => `<div class="hero__stat"><strong data-counter>${s.value}</strong><span>${s.label}</span></div>`)
     .join('')
 }
 
 export function renderHeroArt() {
   const el = qs('[data-hero-art]')
   if (!el) return
-  const items = getServices().slice(0, 6)
+  const items = getServices().slice(0, 4)
   el.innerHTML = `
     <div class="hero-services">
       <div class="hero-services__head">
@@ -31,7 +31,7 @@ export function renderHeroArt() {
         ${items
           .map(
             (s) => `
-          <a href="#book" class="hero-services__item">
+          <a href="#/book" class="hero-services__item">
             <span class="hero-services__icon">${icon(s.icon, 19)}</span>
             <span class="hero-services__name">${s.name}</span>
             <span class="hero-services__price">From ₹${s.basePrice}</span>
@@ -48,13 +48,13 @@ export function renderServices() {
   if (!el) return
   el.innerHTML = getServices()
     .map(
-      (s) => `
-      <div class="service-card">
+      (s, i) => `
+      <a href="#/book" class="service-card" style="--reveal-delay:${i * 60}ms" data-reveal>
         <div class="service-card__icon">${icon(s.icon)}</div>
-        <h3>${s.name}</h3>
+        <h3>${s.name}<span class="service-card__arrow">${icon('arrow-right', 18)}</span></h3>
         <p>${s.description}</p>
         <div class="service-card__price">From ₹${s.basePrice}</div>
-      </div>`
+      </a>`
     )
     .join('')
 
@@ -69,7 +69,8 @@ export function renderSteps() {
   el.innerHTML = steps
     .map(
       (s, i) => `
-      <div class="step-card">
+      <div class="step-card" style="--reveal-delay:${i * 80}ms" data-reveal>
+        <div class="step-card__icon">${icon(s.icon, 20)}</div>
         <div class="step-card__num">${String(i + 1).padStart(2, '0')}</div>
         <h3>${s.title}</h3>
         <p>${s.body}</p>
@@ -83,10 +84,10 @@ export function renderWork() {
   if (!el) return
   el.innerHTML = workGallery
     .map(
-      (w) => `
-      <div class="work-card work-card--${w.tone}${w.wide ? ' work-card--wide' : ''}">
-        <svg class="work-card__watermark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${iconPaths(w.icon, 'none')}</svg>
-        <div class="work-card__icon">${icon(w.icon, 28, { tone: 'inverse' })}</div>
+      (w, i) => `
+      <div class="work-card work-card--${w.tone}${w.wide ? ' work-card--wide' : ''}" style="background-image:url('${w.image}');--reveal-delay:${i * 70}ms" data-reveal>
+        <span class="work-card__view">${icon('arrow-right', 13)} Completed</span>
+        <div class="work-card__icon">${icon(w.icon, 22, { tone: 'inverse' })}</div>
         <div class="work-card__text">
           <span class="work-card__label">${w.label}</span>
           <span class="work-card__descriptor">${w.descriptor}</span>
@@ -101,14 +102,14 @@ export function renderPricing() {
   if (!el) return
   el.innerHTML = plans
     .map(
-      (p) => `
-      <div class="price-card ${p.featured ? 'price-card--featured' : ''}">
-        ${p.featured ? '<span class="price-card__badge">Most popular</span>' : ''}
+      (p, i) => `
+      <div class="price-card ${p.featured ? 'price-card--featured' : ''}" style="--reveal-delay:${i * 80}ms" data-reveal>
+        ${p.featured ? `<span class="price-card__badge">${icon('star', 12)} Most popular</span>` : ''}
         <h3>${p.name}</h3>
         <div class="price-card__price">₹${p.price}<span>/mo</span></div>
         <p class="desc">${p.desc}</p>
         <ul>${p.includes.map((f) => `<li>${icon('check', 16)} ${f}</li>`).join('')}</ul>
-        <a class="btn btn--${p.featured ? 'primary' : 'ghost'}" href="#book" style="width:100%">Choose ${p.name}</a>
+        <a class="btn btn--${p.featured ? 'primary' : 'ghost'}" href="#/book" style="width:100%">Choose ${p.name}</a>
       </div>`
     )
     .join('')
@@ -119,11 +120,15 @@ export function renderTestimonials() {
   if (!el) return
   el.innerHTML = testimonials
     .map(
-      (t) => `
-      <div class="testimonial-card">
+      (t, i) => `
+      <div class="testimonial-card" style="--reveal-delay:${i * 90}ms" data-reveal>
+        <div class="testimonial-card__top">
+          <span class="testimonial-card__mark" aria-hidden="true">${icon('quote', 26)}</span>
+          <div class="testimonial-card__stars" aria-hidden="true">${Array.from({ length: 5 }, () => icon('star', 14)).join('')}</div>
+        </div>
         <p class="testimonial-card__quote">"${t.quote}"</p>
         <div class="testimonial-card__author">
-          <div class="testimonial-card__avatar">${t.name.split(' ').map((n) => n[0]).join('')}</div>
+          <img class="testimonial-card__avatar" src="${t.avatar}" alt="" width="44" height="44" loading="lazy" />
           <div><strong>${t.name}</strong><span>${t.role}</span></div>
         </div>
       </div>`

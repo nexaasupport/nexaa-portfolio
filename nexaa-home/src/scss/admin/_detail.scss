@@ -1,0 +1,80 @@
+@use 'tokens' as *;
+
+// Read-only detail panel used inside modals (job details, etc.)
+.job-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__ref {
+    font-size: 0.78rem;
+    color: $a-ink-500;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__section {
+    h4 {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: $a-ink-500;
+      margin: 0 0 8px;
+    }
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 6px 0;
+    border-bottom: 1px solid $a-border;
+    font-size: 0.86rem;
+
+    span { color: $a-ink-500; }
+    strong { color: $a-ink-900; font-weight: 600; text-align: right; }
+
+    &:last-child { border-bottom: none; }
+  }
+}
+
+// Shared pagination footer for admin tables/card grids.
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 14px 4px 4px;
+
+  &__info { font-size: 0.8rem; color: $a-ink-500; }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__current { font-size: 0.8rem; color: $a-ink-700; font-weight: 600; }
+
+  &__btn {
+    width: 30px; height: 30px;
+    border-radius: $a-radius-sm;
+    border: 1px solid $a-border;
+    background: $a-surface-white;
+    color: $a-ink-700;
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background $a-transition, border-color $a-transition, color $a-transition;
+
+    &:hover:not(:disabled) { background: $a-surface-alt; border-color: $a-accent; color: $a-accent-dark; }
+    &:disabled { opacity: 0.4; cursor: not-allowed; }
+  }
+}

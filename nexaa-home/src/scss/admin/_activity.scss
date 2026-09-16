@@ -1,24 +1,24 @@
-@use '../base/variables' as *;
+@use 'tokens' as *;
 
 .activity-feed {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 
 .activity-item {
   display: flex;
-  gap: 12px;
-  font-size: 0.85rem;
+  gap: 11px;
+  font-size: 0.82rem;
 
   &__dot {
-    width: 8px; height: 8px;
+    width: 7px; height: 7px;
     border-radius: 50%;
-    background: $brand-500;
+    background: $a-accent;
     margin-top: 6px;
     flex-shrink: 0;
   }
 
-  &__message { color: $ink-700; }
-  &__time { color: $ink-300; font-size: 0.76rem; margin-top: 2px; }
+  &__message { color: $a-ink-700; }
+  &__time { color: $a-ink-300; font-size: 0.74rem; margin-top: 2px; }
 }

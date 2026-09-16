@@ -10,7 +10,6 @@
 }
 
 .work-card {
-  @include card-hover;
   aspect-ratio: 4 / 3;
   overflow: hidden;
   position: relative;
@@ -21,8 +20,45 @@
   padding: 22px;
   border-radius: $radius-md;
   color: $surface-white;
-  background: var(--tone);
+  background-size: cover;
+  background-position: center;
   box-shadow: $shadow-sm;
+  transition: transform 220ms cubic-bezier(.22, 1, .36, 1), box-shadow 220ms cubic-bezier(.22, 1, .36, 1);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, oklch(0.18 0.014 260 / 0.05) 40%, oklch(0.18 0.014 260 / 0.82) 100%);
+  }
+
+  &:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: $shadow-md;
+
+    .work-card__view { opacity: 1; transform: translateY(0); }
+  }
+
+  &__view {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 13px;
+    border-radius: $radius-pill;
+    background: oklch(1 0 0 / 0.16);
+    backdrop-filter: blur(6px);
+    border: 1px solid oklch(1 0 0 / 0.3);
+    color: $surface-white;
+    font-size: 0.74rem;
+    font-weight: 600;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity $transition, transform $transition;
+    z-index: 1;
+  }
 
   &--wide {
     grid-column: span 2;
@@ -32,8 +68,8 @@
 
   &__icon {
     align-self: flex-start;
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -52,7 +88,7 @@
   &__label {
     font-family: $font-display;
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 600;
   }
 
   &__descriptor {
@@ -60,22 +96,5 @@
     color: oklch(1 0 0 / 0.78);
   }
 
-  &__watermark {
-    position: absolute;
-    top: -10%;
-    right: -8%;
-    width: 60%;
-    height: auto;
-    color: oklch(1 0 0 / 0.14);
-    pointer-events: none;
-    z-index: 0;
-  }
-
   &__icon, &__text { position: relative; z-index: 1; }
-
-  &--1 { --tone: linear-gradient(155deg, #{$brand-900}, #{$brand-700}); }
-  &--2 { --tone: linear-gradient(155deg, #{$brand-700}, #{$brand-500}); }
-  &--3 { --tone: linear-gradient(155deg, #{$accent-dark}, #{$accent}); }
-  &--4 { --tone: linear-gradient(155deg, #{$ink-900}, #{$brand-900}); }
-  &--5 { --tone: linear-gradient(155deg, #{$brand-500}, #{$brand-700}); }
 }

@@ -1,16 +1,19 @@
-import { qs, qsa, formatCurrency } from '../../lib/dom.js'
+import { qs, qsa, formatCurrency, formatDateTime } from '../../lib/dom.js'
 import { getDashboardStats, getJobsWithDetails, getDB, assignTechnician, updateJobStatus, findOrCreateCustomer, addJob, getServices } from '../../lib/store.js'
 import { statCard } from '../components/statCard.js'
-import { barChart } from '../components/chart.js'
+import { renderHorizontalBar, destroyChartsIn, PALETTE } from '../components/apex.js'
 import { activityFeed } from '../components/activityFeed.js'
 import { renderTable, STATUS_OPTIONS, statusBadge } from '../components/table.js'
+import { openJobDetail } from '../components/jobDetail.js'
 import { openModal } from '../../lib/modal.js'
 import { showToast } from '../../lib/toast.js'
+import { icon } from '../components/icons.js'
 
 function jobColumns(technicians) {
   return [
     { label: 'Customer', render: (j) => `<div class="cell-person"><strong>${j.customer?.name ?? 'Unknown'}</strong><span>${j.customer?.phone ?? ''}</span></div>` },
     { label: 'Service', render: (j) => j.serviceInfo?.name ?? j.service },
+    { label: 'Scheduled', render: (j) => formatDateTime(j.scheduledAt) },
     {
       label: 'Technician',
       render: (j) => `
@@ -27,16 +30,17 @@ function jobColumns(technicians) {
         </select>`,
     },
     { label: 'Price', render: (j) => formatCurrency(j.price) },
+    { label: '', render: (j) => `<button class="btn btn--ghost btn--sm" data-view="${j.id}" aria-label="View details">${icon('eye', { size: 14 })}</button>` },
   ]
 }
 
 export default function renderDashboard(mount) {
+  destroyChartsIn(mount)
+
   const stats = getDashboardStats()
   const jobs = getJobsWithDetails()
   const technicians = getDB().technicians
   const activity = getDB().activity
-
-  const utilRows = technicians.map((t) => ({ label: t.name, value: t.completedJobs }))
 
   mount.innerHTML = `
     <div class="admin-view">
@@ -47,21 +51,21 @@ export default function renderDashboard(mount) {
         </div>
         <div class="admin-toolbar">
           <div class="admin-search">
-            <span>⌕</span>
+            ${icon('search', { size: 16 })}
             <input type="search" placeholder="Search jobs by customer or service" data-job-search />
           </div>
-          <button class="btn btn--primary btn--sm" data-new-job>+ New Job</button>
+          <button class="btn btn--primary btn--sm" data-new-job>${icon('plus', { size: 16 })} New Job</button>
         </div>
       </div>
 
       <div class="admin-grid">
-        ${statCard('Jobs Today', stats.jobsToday)}
-        ${statCard('Unassigned Requests', stats.unassigned)}
-        ${statCard('Active Customers', stats.activeCustomers)}
-        ${statCard('Revenue MTD', formatCurrency(stats.revenueMTD))}
+        ${statCard('Jobs Today', stats.jobsToday, { icon: 'calendar' })}
+        ${statCard('Unassigned Requests', stats.unassigned, { icon: 'clock' })}
+        ${statCard('Active Customers', stats.activeCustomers, { icon: 'customers' })}
+        ${statCard('Revenue MTD', formatCurrency(stats.revenueMTD), { icon: 'trending-up' })}
       </div>
 
-      <div class="admin-panel" style="margin-bottom:18px">
+      <div class="admin-panel admin-panel--mb">
         <div class="admin-panel__head">
           <h2>Active Jobs</h2>
           <a href="#/jobs">View all →</a>
@@ -71,8 +75,8 @@ export default function renderDashboard(mount) {
 
       <div class="admin-cols-2">
         <div class="admin-panel">
-          <div class="admin-panel__head"><h2>Technician Utilization</h2></div>
-          ${barChart(utilRows)}
+          <div class="admin-panel__head"><h2>Technician Utilization</h2><a href="#/reports">Full report →</a></div>
+          ${technicians.length ? '<div data-chart="util"></div>' : '<div class="empty-state">No technicians yet.</div>'}
         </div>
         <div class="admin-panel">
           <div class="admin-panel__head"><h2>Recent Activity</h2></div>
@@ -82,15 +86,17 @@ export default function renderDashboard(mount) {
     </div>`
 
   function paintTable(filtered) {
+    const shown = filtered.slice(0, 8)
+    const byId = new Map(shown.map((j) => [j.id, j]))
     qs('[data-jobs-table]', mount).innerHTML = renderTable({
       columns: jobColumns(technicians),
-      rows: filtered.slice(0, 8),
+      rows: shown,
       emptyMessage: 'No jobs match your search.',
     })
-    attachRowHandlers()
+    attachRowHandlers(byId)
   }
 
-  function attachRowHandlers() {
+  function attachRowHandlers(byId) {
     qsa('[data-assign]', mount).forEach((select) => {
       select.addEventListener('change', () => {
         if (select.value) assignTechnician(select.dataset.assign, select.value)
@@ -99,9 +105,20 @@ export default function renderDashboard(mount) {
     qsa('[data-status]', mount).forEach((select) => {
       select.addEventListener('change', () => updateJobStatus(select.dataset.status, select.value))
     })
+    qsa('[data-view]', mount).forEach((btn) => {
+      btn.addEventListener('click', () => openJobDetail(byId.get(btn.dataset.view)))
+    })
   }
 
   paintTable(jobs)
+
+  if (technicians.length) {
+    renderHorizontalBar(qs('[data-chart="util"]', mount), {
+      categories: technicians.map((t) => t.name),
+      series: { name: 'Completed jobs', data: technicians.map((t) => t.completedJobs) },
+      color: PALETTE.accent,
+    })
+  }
 
   qs('[data-job-search]', mount).addEventListener('input', (e) => {
     const term = e.target.value.trim().toLowerCase()
